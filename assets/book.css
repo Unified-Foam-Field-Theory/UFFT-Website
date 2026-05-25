@@ -22,15 +22,16 @@ body.book {
 .book-bar .home { margin-right: auto; display: flex; align-items: baseline; gap: 11px; }
 .book-bar .home .logo {
   font-family: var(--mono); font-weight: 700; color: var(--accent);
-  border: 1px solid var(--accent-dim); padding: 3px 8px; border-radius: 7px; font-size: 15px;
+  border: 1px solid var(--accent-dim); padding: 3px 8px; border-radius: 7px; font-size: 0.9375rem;
 }
-.book-bar .home .bk { font-size: 14px; color: var(--text-dim); font-weight: 600; }
-.book-bar a.bl { color: var(--text-dim); font-size: 14px; font-weight: 500; }
+.book-bar .home .bk { font-size: 0.875rem; color: var(--text-dim); font-weight: 600; }
+.book-bar a.bl { color: var(--text-dim); font-size: 0.875rem; font-weight: 500; }
 .book-bar a.bl:hover { color: var(--text); text-decoration: none; }
 
 /* ---- reading column ----------------------------------------------------- */
 .reading { max-width: clamp(20rem, 92vw, 48rem); margin: 0 auto; padding: var(--space-6) 24px 80px;
   display: grid; gap: var(--gap-block); align-content: start; }
+.reading > *, .chap-block > * { min-width: 0; }   /* grid items shrink instead of overflowing (canvas fix) */
 .book-prose {
   font-family: var(--serif); font-size: 1.2rem; line-height: 1.72; color: #dde5ee;
   display: grid; gap: var(--space-4); align-content: start;
@@ -40,7 +41,7 @@ body.book {
 .book-prose strong { color: #fff; font-weight: 700; }
 .book-prose em { color: #eef3f8; }
 .book-prose h3 {
-  font-family: var(--sans); font-size: 15px; letter-spacing: 1.5px; text-transform: uppercase;
+  font-family: var(--sans); font-size: 0.9375rem; letter-spacing: 1.5px; text-transform: uppercase;
   color: var(--accent); font-weight: 650; padding-top: var(--space-4);   /* extra air before a subsection */
 }
 .book-prose hr { border: none; border-top: 1px solid var(--border); }
@@ -70,7 +71,7 @@ body.book {
 /* ---- chapter header + illustration ------------------------------------- */
 .chap-head { display: grid; gap: var(--gap-tight); justify-items: start; }  /* tight cluster: part-label + title */
 .part-label {
-  font-family: var(--mono); font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 2.5px; text-transform: uppercase;
   color: var(--text-faint);
 }
 .chap-title { font-family: var(--serif); font-size: 2.1rem; line-height: 1.12; font-weight: 700; }
@@ -82,7 +83,7 @@ body.book {
 .chap-illus img { display: block; width: 100%; height: 260px; object-fit: cover; }
 .chap-illus .cap {
   position: absolute; left: 0; right: 0; bottom: 0; padding: 9px 14px;
-  font-family: var(--mono); font-size: 12px; color: var(--text-dim);
+  font-family: var(--mono); font-size: 0.75rem; color: var(--text-dim);
   background: linear-gradient(0deg, rgba(10,13,18,.92), transparent);
 }
 .chap-illus .cap em { color: var(--text-faint); font-style: normal; }
@@ -97,37 +98,37 @@ body.book {
 }
 .chap-nav a:hover { border-color: var(--accent); background: rgba(90,209,200,.04); text-decoration: none; }
 .chap-nav a.next { text-align: right; }
-.chap-nav .dir { font-family: var(--mono); font-size: 11px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 1px; }
-.chap-nav .ttl { font-family: var(--serif); font-size: 16px; }
+.chap-nav .dir { font-family: var(--mono); font-size: 0.6875rem; color: var(--text-faint); text-transform: uppercase; letter-spacing: 1px; }
+.chap-nav .ttl { font-family: var(--serif); font-size: 1rem; }
 .chap-nav .spacer { flex: 1; }
 
 /* ---- contents / cover --------------------------------------------------- */
 .cover { text-align: center; padding: var(--space-5) 0 var(--space-6); border-bottom: 1px solid var(--border);
   display: grid; gap: var(--gap-group); justify-items: center; }
-.cover .kicker { font-family: var(--mono); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); }
+.cover .kicker { font-family: var(--mono); font-size: 0.8125rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); }
 .cover h1 { font-family: var(--serif); font-size: 3rem; line-height: 1.05; font-weight: 700; letter-spacing: -.5px; }
 .cover .sub { font-family: var(--serif); font-style: italic; font-size: 1.4rem; color: var(--text-dim); }
-.cover .byline { font-size: 15px; color: var(--text-dim); }
+.cover .byline { font-size: 0.9375rem; color: var(--text-dim); }
 .cover .byline .nm { color: var(--text); font-weight: 600; }
 .cover .axiom { display: inline-block; font-family: var(--mono); color: var(--accent);
   border: 1px solid var(--accent-dim); border-radius: 9px; padding: 8px 16px; }
 
 .epigraphs { max-width: 34rem; margin-inline: auto; font-family: var(--serif); font-style: italic;
   color: var(--text-dim); text-align: center; line-height: 1.7; }
-.epigraphs .src { font-style: normal; font-family: var(--mono); font-size: 12.5px; color: var(--text-faint); }
+.epigraphs .src { font-style: normal; font-family: var(--mono); font-size: 0.7812rem; color: var(--text-faint); }
 
 .frontnote { max-width: 38rem; margin-inline: auto; }
 .toc { display: grid; gap: var(--space-1); align-content: start; }
-.toc .part-h { font-family: var(--mono); font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+.toc .part-h { font-family: var(--mono); font-size: 0.8125rem; letter-spacing: 2px; text-transform: uppercase;
   color: var(--accent); border-bottom: 1px solid var(--border); padding: var(--space-4) 0 8px; }
 .toc .part-h .pdesc { display:block; font-family: var(--serif); font-style: italic; text-transform: none;
-  letter-spacing: 0; color: var(--text-faint); font-size: 14px; padding-top: 6px; }
+  letter-spacing: 0; color: var(--text-faint); font-size: 0.875rem; padding-top: 6px; }
 .toc-item { display: flex; align-items: baseline; gap: 12px; padding: 11px 8px; border-radius: 9px;
   color: var(--text); border: 1px solid transparent; }
 .toc-item:hover { background: rgba(90,209,200,.04); border-color: var(--border); text-decoration: none; }
-.toc-item .tnum { font-family: var(--mono); font-size: 12.5px; color: var(--text-faint); min-width: 78px; }
-.toc-item .ttl { font-family: var(--serif); font-size: 18px; }
-.toc-item .til { color: var(--text-faint); font-size: 14px; margin-left: auto; font-style: italic; }
+.toc-item .tnum { font-family: var(--mono); font-size: 0.7812rem; color: var(--text-faint); min-width: 78px; }
+.toc-item .ttl { font-family: var(--serif); font-size: 1.125rem; }
+.toc-item .til { color: var(--text-faint); font-size: 0.875rem; margin-left: auto; font-style: italic; }
 
 /* single-page book (The Shape of Everything) */
 .chap-illus.compact canvas { height: 168px; }
