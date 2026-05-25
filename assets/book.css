@@ -131,6 +131,13 @@ body.book {
 .toc-item .ttl { font-family: var(--serif); font-size: 18px; }
 .toc-item .til { color: var(--text-faint); font-size: 14px; margin-left: auto; font-style: italic; }
 
+/* single-page book (The Shape of Everything) */
+.chap-illus.compact canvas { height: 168px; }
+.chap-block { padding-top: 14px; }
+.chap-block .chap-title { font-size: 30px; }
+[id] { scroll-margin-top: 72px; }
+.toc-item .tnum.wide { min-width: 96px; }
+
 @media (max-width: 620px) {
   .cover h1 { font-size: 38px; }
   .chap-title { font-size: 30px; }

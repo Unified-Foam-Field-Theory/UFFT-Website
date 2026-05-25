@@ -20,3 +20,7 @@
   from = "/book/*"
   to = "/foam-unites-us/:splat"
   status = 301
+[[redirects]]
+  from = "/shape"
+  to = "/shape-of-everything/"
+  status = 301
