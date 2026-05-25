@@ -16,7 +16,7 @@ body.book {
   border-bottom: 1px solid var(--border);
 }
 .book-bar-inner {
-  max-width: clamp(20rem, 92vw, 46rem); margin: 0 auto; padding: 12px 24px;
+  max-width: clamp(20rem, 92vw, 48rem); margin: 0 auto; padding: 12px 24px;
   display: flex; align-items: center; gap: 18px;
 }
 .book-bar .home { margin-right: auto; display: flex; align-items: baseline; gap: 11px; }
@@ -29,12 +29,12 @@ body.book {
 .book-bar a.bl:hover { color: var(--text); text-decoration: none; }
 
 /* ---- reading column ----------------------------------------------------- */
-.reading { max-width: clamp(20rem, 90vw, 40rem); margin: 0 auto; padding: var(--space-6) 24px 80px;
+.reading { max-width: clamp(20rem, 92vw, 48rem); margin: 0 auto; padding: var(--space-6) 24px 80px;
   display: grid; gap: var(--gap-block); align-content: start; }
 .book-prose {
   font-family: var(--serif); font-size: 1.2rem; line-height: 1.72; color: #dde5ee;
   display: grid; gap: var(--space-4); align-content: start;
-  max-width: 60ch; margin-inline: auto;   /* 50–60 char measure (optimal), centred */
+  max-width: 75ch; margin-inline: auto;   /* 75-char measure, centred */
 }
 .book-prose p { max-width: none; }
 .book-prose strong { color: #fff; font-weight: 700; }
