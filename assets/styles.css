@@ -178,8 +178,8 @@ section:last-of-type { border-bottom: none; }
 }
 h2 { font-size: 1.7rem; font-weight: 700; letter-spacing: -.3px; }
 h3 { font-size: 1.18rem; font-weight: 650; }
-.section-sub { color: var(--text-dim); max-width: 70ch; }
-p { max-width: 74ch; }
+.section-sub { color: var(--text-dim); max-width: 60ch; }
+p { max-width: 60ch; }
 .muted { color: var(--text-dim); }
 .faint { color: var(--text-faint); }
 

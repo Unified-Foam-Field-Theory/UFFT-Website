@@ -34,6 +34,7 @@ body.book {
 .book-prose {
   font-family: var(--serif); font-size: 1.2rem; line-height: 1.72; color: #dde5ee;
   display: grid; gap: var(--space-4); align-content: start;
+  max-width: 60ch; margin-inline: auto;   /* 50–60 char measure (optimal), centred */
 }
 .book-prose p { max-width: none; }
 .book-prose strong { color: #fff; font-weight: 700; }
