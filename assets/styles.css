@@ -61,7 +61,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, figure, blockquote, pre { margin: 0; 
 .cluster { display: grid; gap: var(--gap-tight); align-content: start; justify-items: start; }
 
 /* fluid base type — scales with viewport width; rem spacing tokens scale with it */
-html { scroll-behavior: smooth; font-size: clamp(18px, 16px + 0.6vw, 26px); }
+html { scroll-behavior: smooth; font-size: clamp(15px, 12.5px + 0.85vw, 26px); }
 
 body {
   margin: 0;
