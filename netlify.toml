@@ -10,3 +10,13 @@
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Short alias for the book
+[[redirects]]
+  from = "/book"
+  to = "/foam-unites-us/"
+  status = 301
+[[redirects]]
+  from = "/book/*"
+  to = "/foam-unites-us/:splat"
+  status = 301
