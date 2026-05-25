@@ -6,6 +6,9 @@
 <title>Theory — Unified Foam Field Theory</title>
 <meta name="description" content="From Axiom Zero to the Standard Model: the Kelvin cell, its face Laplacian, the eigenvalue spectrum, and the master equation λ²−9λ+16=0." />
 <link rel="canonical" href="https://ufft.info/theory.html" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="Luke Martin" />
+<meta name="theme-color" content="#0a0d12" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Unified Foam Field Theory" />
@@ -20,6 +23,7 @@
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" />
 <link rel="stylesheet" href="assets/styles.css" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://ufft.info/#website", "url": "https://ufft.info/", "name": "Unified Foam Field Theory", "inLanguage": "en"}, {"@type": "Person", "@id": "https://ufft.info/#author", "name": "Luke Martin", "jobTitle": "Independent Researcher", "sameAs": ["https://orcid.org/0009-0006-3716-5951", "https://github.com/WebEnvy/UnifiedFoamFieldTheory"]}, {"@type": "WebPage", "@id": "https://ufft.info/theory.html#webpage", "url": "https://ufft.info/theory.html", "name": "Theory \u2014 Unified Foam Field Theory", "description": "From Axiom Zero to the Standard Model: the Kelvin cell, its face Laplacian, the eigenvalue spectrum, and the master equation \u03bb\u00b2\u22129\u03bb+16=0.", "inLanguage": "en", "isPartOf": {"@id": "https://ufft.info/#website"}, "author": {"@id": "https://ufft.info/#author"}}]}</script>
 </head>
 <body>
 
@@ -44,10 +48,12 @@
 <div class="wrap">
 
 <section style="border-bottom:none;padding-bottom:18px">
-  <div class="section-eyebrow">Theory</div>
-  <h2>From one axiom to the Standard Model</h2>
-  <p class="section-sub">The whole framework hangs on a single eigenvalue spectrum. Every step
+  <div class="cluster">
+      <div class="section-eyebrow">Theory</div>
+      <h1 class="page-title">From one axiom to the Standard Model</h1>
+      <p class="section-sub">The whole framework hangs on a single eigenvalue spectrum. Every step
     below is integer-rigid: nothing is fitted, and changing a cell integer changes the answer.</p>
+    </div>
 </section>
 
 <section>
@@ -111,10 +117,12 @@
 </section>
 
 <section>
-  <div class="section-eyebrow">Inputs</div>
-  <h2>Core integers of the cell</h2>
-  <p class="section-sub">Every input to every formula on this site is one of these. They are
+  <div class="cluster">
+      <div class="section-eyebrow">Inputs</div>
+      <h2>Core integers of the cell</h2>
+      <p class="section-sub">Every input to every formula on this site is one of these. They are
     properties of the truncated octahedron, not adjustable constants.</p>
+    </div>
   <div class="tbl-wrap">
     <table>
       <thead><tr><th>Symbol</th><th>Value</th><th>Meaning</th></tr></thead>
@@ -134,11 +142,13 @@
 </section>
 
 <section>
-  <div class="section-eyebrow">The spectrum</div>
-  <h2>Eigenvalues of the face Laplacian</h2>
-  <p class="section-sub">Fourteen faces give fourteen eigenvalues, grouped by \(O_h\) irrep. Bar height is
+  <div class="cluster">
+      <div class="section-eyebrow">The spectrum</div>
+      <h2>Eigenvalues of the face Laplacian</h2>
+      <p class="section-sub">Fourteen faces give fourteen eigenvalues, grouped by \(O_h\) irrep. Bar height is
     multiplicity. This is exactly what the twelve-line script on the <a href="verify.html">Verify</a>
     page prints — hover any bar for its role.</p>
+    </div>
   <div class="viz">
     <div id="spectrum-chart"></div>
     <div class="cap">L = D − A on the 14 faces. Spectrum: 0, r₁(×3), 4(×2), r₂(×3), 7(×4), 9 — with r₁,r₂ = (9∓√17)/2.</div>
@@ -146,28 +156,32 @@
 </section>
 
 <section>
-  <div class="section-eyebrow">The master equation</div>
-  <h2><span class="mono">λ² − 9λ + 16 = 0</span></h2>
-  <p class="section-sub">The \(T_{1u}\) doublet sits at the roots of one quadratic. Sum of roots
+  <div class="cluster">
+      <div class="section-eyebrow">The master equation</div>
+      <h2><span class="mono">λ² − 9λ + 16 = 0</span></h2>
+      <p class="section-sub">The \(T_{1u}\) doublet sits at the roots of one quadratic. Sum of roots
     \(r_1 + r_2 = 9\); product \(r_1 r_2 = 16\); discriminant \(\Delta = 81 - 64 = 17\). The prime 17
     is not chosen — it falls out of the face counts.</p>
+    </div>
   <div class="viz">
     <div id="parabola-chart"></div>
     <div class="cap">Roots r₁ = (9−√17)/2 ≈ 2.438 and r₂ = (9+√17)/2 ≈ 6.562 — the left- and right-handed fermion modes.</div>
   </div>
   <div class="callout">
-    <p style="margin:0">Because \(\sqrt{17}\) enters here, it reappears in \(\sin^2\theta_W = (17-3\sqrt{17})/20\),
+    <p>Because \(\sqrt{17}\) enters here, it reappears in \(\sin^2\theta_W = (17-3\sqrt{17})/20\),
       in \(m_H/M_Z = 18/(9+\sqrt{17})\), in the Cabibbo angle, and across the mixing sector. One quadratic,
       threaded through the whole Standard Model.</p>
   </div>
 </section>
 
 <section>
-  <div class="section-eyebrow">The modes</div>
-  <h2>What each eigenvalue looks like</h2>
-  <p class="section-sub">The spectrum isn't abstract: each eigenvalue is a standing wave on the cell's
+  <div class="cluster">
+      <div class="section-eyebrow">The modes</div>
+      <h2>What each eigenvalue looks like</h2>
+      <p class="section-sub">The spectrum isn't abstract: each eigenvalue is a standing wave on the cell's
     14 faces, and the framework identifies each with a Standard Model sector. Pick a mode — outward
     motion is amber, inward is teal, nodes stay dark. Drag to rotate, scroll to zoom.</p>
+    </div>
   <div class="viz">
     <div class="eigen-modes" id="eigen-modes"></div>
     <div class="eigen-stage">
@@ -195,7 +209,7 @@
   <div class="wrap">
     <div>
       <div class="sig">B + V = D</div>
-      <p class="faint" style="margin:10px 0 4px">Luke Martin · Independent Researcher · Newcastle, Australia</p>
+      <p class="faint">Luke Martin · Independent Researcher · Newcastle, Australia</p>
       <a href="https://orcid.org/0009-0006-3716-5951" rel="noopener">ORCID 0009-0006-3716-5951</a>
     </div>
     <div>
@@ -212,9 +226,10 @@
       <a href="predictions.html">Predictions</a>
       <a href="papers.html">Papers</a>
       <a href="verify.html">Verify</a>
+      <a href="shape-of-everything/">The Shape of Everything</a>
     </div>
     <div class="disc">
-      <p class="faint" style="margin:0">Text &amp; figures CC-BY 4.0 · code MIT · Priority date 20 Feb 2026 ·
+      <p class="faint">Text &amp; figures CC-BY 4.0 · code MIT · Priority date 20 Feb 2026 ·
         Framework v10 (April 2026) · Not yet peer reviewed — independent reproduction invited.</p>
     </div>
   </div>

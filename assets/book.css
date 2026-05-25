@@ -16,7 +16,7 @@ body.book {
   border-bottom: 1px solid var(--border);
 }
 .book-bar-inner {
-  max-width: 860px; margin: 0 auto; padding: 12px 24px;
+  max-width: clamp(20rem, 92vw, 46rem); margin: 0 auto; padding: 12px 24px;
   display: flex; align-items: center; gap: 18px;
 }
 .book-bar .home { margin-right: auto; display: flex; align-items: baseline; gap: 11px; }
@@ -29,59 +29,54 @@ body.book {
 .book-bar a.bl:hover { color: var(--text); text-decoration: none; }
 
 /* ---- reading column ----------------------------------------------------- */
-.reading { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
+.reading { max-width: clamp(20rem, 90vw, 40rem); margin: 0 auto; padding: var(--space-6) 24px 80px;
+  display: grid; gap: var(--gap-block); align-content: start; }
 .book-prose {
-  font-family: var(--serif); font-size: 19px; line-height: 1.78; color: #dde5ee;
+  font-family: var(--serif); font-size: 1.2rem; line-height: 1.72; color: #dde5ee;
+  display: grid; gap: var(--space-4); align-content: start;
 }
-.book-prose p { max-width: none; margin: 0 0 1.15em; }
+.book-prose p { max-width: none; }
 .book-prose strong { color: #fff; font-weight: 700; }
 .book-prose em { color: #eef3f8; }
 .book-prose h3 {
   font-family: var(--sans); font-size: 15px; letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--accent); margin: 2.2em 0 .7em; font-weight: 650;
+  color: var(--accent); font-weight: 650; padding-top: var(--space-4);   /* extra air before a subsection */
 }
-.book-prose hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+.book-prose hr { border: none; border-top: 1px solid var(--border); }
 .book-prose blockquote {
-  border-left: 3px solid var(--accent-dim); margin: 1.4em 0; padding: .2em 0 .2em 22px;
+  border-left: 3px solid var(--accent-dim); padding: .2em 0 .2em 22px;
   color: var(--text-dim); font-style: italic;
 }
-/* drop-cap on the first paragraph of a chapter — 2-line, so short
-   opening paragraphs don't bleed the cap into the next paragraph. */
+/* raised cap: an enlarged initial that sits on the first baseline and rises
+   above the line (no float, no sink) */
 .book-prose.dropcap > p:first-of-type::first-letter {
-  float: left;                 /* fallback (Firefox) */
   font-family: var(--serif); font-weight: 700; color: var(--accent);
-  font-size: 3em; line-height: 0.66; margin: 0.04em 0.12em 0 0;
-}
-@supports (initial-letter: 2) {
-  .book-prose.dropcap > p:first-of-type::first-letter {
-    float: none; initial-letter: 2; font-size: inherit; line-height: inherit; margin: 0 0.12em 0 0;
-  }
-}
-@supports (-webkit-initial-letter: 2) {
-  .book-prose.dropcap > p:first-of-type::first-letter {
-    float: none; -webkit-initial-letter: 2; font-size: inherit; line-height: inherit; margin: 0 0.14em 0 0;
-  }
+  font-size: 2.9em; line-height: 0.9; vertical-align: baseline; padding-right: 0.04em;
 }
 
 /* standalone display equations → centered mono block */
 .book-prose .eq {
-  font-family: var(--mono); font-size: 17px; color: var(--accent);
+  font-family: var(--mono); font-size: 1.05rem; color: var(--accent);
   background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
-  padding: 14px 18px; margin: 1.5em 0; text-align: center; letter-spacing: .4px;
+  padding: 14px 18px; text-align: center; letter-spacing: .4px;
   overflow-x: auto;
 }
 
+/* subtle citation link (real published sources) */
+.book-prose a.cite { color: var(--text-dim); text-decoration: none; border-bottom: 1px dotted var(--border-2); }
+.book-prose a.cite:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
 /* ---- chapter header + illustration ------------------------------------- */
-.chap-head { padding: 30px 0 8px; }
+.chap-head { display: grid; gap: var(--gap-tight); justify-items: start; }  /* tight cluster: part-label + title */
 .part-label {
   font-family: var(--mono); font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--text-faint); margin-bottom: 10px;
+  color: var(--text-faint);
 }
-.chap-title { font-family: var(--serif); font-size: 38px; line-height: 1.12; margin: 0 0 4px; font-weight: 700; }
+.chap-title { font-family: var(--serif); font-size: 2.1rem; line-height: 1.12; font-weight: 700; }
 .chap-num { color: var(--accent); }
 
 .chap-illus { position: relative; border: 1px solid var(--border); border-radius: 14px;
-  overflow: hidden; margin: 18px 0 6px; background: linear-gradient(180deg, #0e1722, #0a0f17); }
+  overflow: hidden; background: linear-gradient(180deg, #0e1722, #0a0f17); }
 .chap-illus canvas { display: block; width: 100%; height: 260px; }
 .chap-illus img { display: block; width: 100%; height: 260px; object-fit: cover; }
 .chap-illus .cap {
@@ -92,38 +87,40 @@ body.book {
 .chap-illus .cap em { color: var(--text-faint); font-style: normal; }
 
 /* ---- prev / next -------------------------------------------------------- */
-.chap-nav { display: flex; justify-content: space-between; gap: 14px; margin-top: 48px;
+.chap-nav { display: flex; justify-content: space-between; gap: 14px;
   border-top: 1px solid var(--border); padding-top: 22px; }
 .chap-nav a {
   flex: 1; background: var(--panel); border: 1px solid var(--border); border-radius: 11px;
   padding: 14px 16px; color: var(--text); transition: border-color .15s, background .15s;
+  display: grid; gap: var(--space-1);
 }
 .chap-nav a:hover { border-color: var(--accent); background: rgba(90,209,200,.04); text-decoration: none; }
 .chap-nav a.next { text-align: right; }
 .chap-nav .dir { font-family: var(--mono); font-size: 11px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 1px; }
-.chap-nav .ttl { font-family: var(--serif); font-size: 16px; margin-top: 3px; }
+.chap-nav .ttl { font-family: var(--serif); font-size: 16px; }
 .chap-nav .spacer { flex: 1; }
 
 /* ---- contents / cover --------------------------------------------------- */
-.cover { text-align: center; padding: 64px 0 36px; border-bottom: 1px solid var(--border); }
+.cover { text-align: center; padding: var(--space-5) 0 var(--space-6); border-bottom: 1px solid var(--border);
+  display: grid; gap: var(--gap-group); justify-items: center; }
 .cover .kicker { font-family: var(--mono); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); }
-.cover h1 { font-family: var(--serif); font-size: 54px; line-height: 1.05; margin: 14px 0 8px; font-weight: 700; letter-spacing: -.5px; }
-.cover .sub { font-family: var(--serif); font-style: italic; font-size: 23px; color: var(--text-dim); margin: 0 0 22px; }
+.cover h1 { font-family: var(--serif); font-size: 3rem; line-height: 1.05; font-weight: 700; letter-spacing: -.5px; }
+.cover .sub { font-family: var(--serif); font-style: italic; font-size: 1.4rem; color: var(--text-dim); }
 .cover .byline { font-size: 15px; color: var(--text-dim); }
 .cover .byline .nm { color: var(--text); font-weight: 600; }
 .cover .axiom { display: inline-block; font-family: var(--mono); color: var(--accent);
-  border: 1px solid var(--accent-dim); border-radius: 9px; padding: 8px 16px; margin-top: 24px; }
+  border: 1px solid var(--accent-dim); border-radius: 9px; padding: 8px 16px; }
 
-.epigraphs { max-width: 600px; margin: 32px auto; font-family: var(--serif); font-style: italic;
+.epigraphs { max-width: 34rem; margin-inline: auto; font-family: var(--serif); font-style: italic;
   color: var(--text-dim); text-align: center; line-height: 1.7; }
 .epigraphs .src { font-style: normal; font-family: var(--mono); font-size: 12.5px; color: var(--text-faint); }
 
-.frontnote { max-width: 680px; margin: 0 auto; }
-.toc { margin: 10px 0; }
+.frontnote { max-width: 38rem; margin-inline: auto; }
+.toc { display: grid; gap: var(--space-1); align-content: start; }
 .toc .part-h { font-family: var(--mono); font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--accent); margin: 34px 0 6px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  color: var(--accent); border-bottom: 1px solid var(--border); padding: var(--space-4) 0 8px; }
 .toc .part-h .pdesc { display:block; font-family: var(--serif); font-style: italic; text-transform: none;
-  letter-spacing: 0; color: var(--text-faint); font-size: 14px; margin-top: 6px; }
+  letter-spacing: 0; color: var(--text-faint); font-size: 14px; padding-top: 6px; }
 .toc-item { display: flex; align-items: baseline; gap: 12px; padding: 11px 8px; border-radius: 9px;
   color: var(--text); border: 1px solid transparent; }
 .toc-item:hover { background: rgba(90,209,200,.04); border-color: var(--border); text-decoration: none; }
@@ -133,13 +130,13 @@ body.book {
 
 /* single-page book (The Shape of Everything) */
 .chap-illus.compact canvas { height: 168px; }
-.chap-block { padding-top: 14px; }
-.chap-block .chap-title { font-size: 30px; }
+.chap-block { display: grid; gap: var(--gap-block); align-content: start; }
+.chap-block .chap-title { font-size: 1.85rem; }
 [id] { scroll-margin-top: 72px; }
 .toc-item .tnum.wide { min-width: 96px; }
 
 @media (max-width: 620px) {
-  .cover h1 { font-size: 38px; }
-  .chap-title { font-size: 30px; }
+  .cover h1 { font-size: 2.2rem; }
+  .chap-title { font-size: 1.85rem; }
   .toc-item .til { display: none; }
 }

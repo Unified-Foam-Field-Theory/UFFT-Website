@@ -6,6 +6,9 @@
 <title>Verify — Unified Foam Field Theory</title>
 <meta name="description" content="Reproduce the eigenvalue spectrum UFFT rests on in twelve lines of NumPy. Full verification scripts, Zenodo DOIs, and the repository." />
 <link rel="canonical" href="https://ufft.info/verify.html" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="Luke Martin" />
+<meta name="theme-color" content="#0a0d12" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Unified Foam Field Theory" />
@@ -20,6 +23,7 @@
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" />
 <link rel="stylesheet" href="assets/styles.css" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://ufft.info/#website", "url": "https://ufft.info/", "name": "Unified Foam Field Theory", "inLanguage": "en"}, {"@type": "Person", "@id": "https://ufft.info/#author", "name": "Luke Martin", "jobTitle": "Independent Researcher", "sameAs": ["https://orcid.org/0009-0006-3716-5951", "https://github.com/WebEnvy/UnifiedFoamFieldTheory"]}, {"@type": "WebPage", "@id": "https://ufft.info/verify.html#webpage", "url": "https://ufft.info/verify.html", "name": "Verify \u2014 Unified Foam Field Theory", "description": "Reproduce the eigenvalue spectrum UFFT rests on in twelve lines of NumPy. Full verification scripts, Zenodo DOIs, and the repository.", "inLanguage": "en", "isPartOf": {"@id": "https://ufft.info/#website"}, "author": {"@id": "https://ufft.info/#author"}}]}</script>
 </head>
 <body>
 
@@ -44,15 +48,17 @@
 <div class="wrap">
 
 <section style="border-bottom:none;padding-bottom:14px">
-  <div class="section-eyebrow">Verify</div>
-  <h2>Don't take it on faith — run it</h2>
-  <p class="section-sub">The entire framework rests on one eigenvalue spectrum. Here it is in twelve
+  <div class="cluster">
+      <div class="section-eyebrow">Verify</div>
+      <h1 class="page-title">Don't take it on faith — run it</h1>
+      <p class="section-sub">The entire framework rests on one eigenvalue spectrum. Here it is in twelve
     lines of NumPy, no external data. If these numbers don't come out, the framework is wrong — so
     check them first.</p>
+    </div>
 </section>
 
 <section>
-  <h3 style="margin-top:0">The spectrum in twelve lines</h3>
+  <h3>The spectrum in twelve lines</h3>
   <div class="code-wrap">
     <button class="copy-btn" data-target="#spectrum-code">copy</button>
     <pre id="spectrum-code"><span class="kw">import</span> numpy <span class="kw">as</span> np
@@ -72,10 +78,10 @@ print(np.round(np.linalg.eigvalsh(L.astype(float)), <span class="st">4</span>))
 <span class="cm"># → [0  2.4384 2.4384 2.4384  4  4  6.5616 6.5616 6.5616  7  7  7  7  9]</span></pre>
   </div>
   <div class="callout">
-    <p style="margin:0">Expected output — the spectrum every result is read from:</p>
-    <pre style="margin-top:10px"><span class="st">[-0.      2.4384  2.4384  2.4384  4.      4.      6.5616  6.5616  6.5616
+    <p>Expected output — the spectrum every result is read from:</p>
+    <pre><span class="st">[-0.      2.4384  2.4384  2.4384  4.      4.      6.5616  6.5616  6.5616
   7.      7.      7.      7.      9.    ]</span></pre>
-    <p class="faint" style="margin:8px 0 0">The roots 2.4384 and 6.5616 are (9∓√17)/2 — the master equation
+    <p class="faint">The roots 2.4384 and 6.5616 are (9∓√17)/2 — the master equation
       λ²−9λ+16 = 0. The −0.0 is the floating-point print of the exact zero mode.</p>
   </div>
 </section>
@@ -102,8 +108,10 @@ python streams/education/Mathematics/verify_spectra_v2.py</pre>
 </section>
 
 <section>
-  <div class="section-eyebrow">Sources</div>
-  <h2>Read the full work</h2>
+  <div class="cluster">
+      <div class="section-eyebrow">Sources</div>
+      <h2>Read the full work</h2>
+    </div>
   <div class="cards">
     <div class="card">
       <h3>Core Framework</h3>
@@ -121,7 +129,7 @@ python streams/education/Mathematics/verify_spectra_v2.py</pre>
       <a href="papers.html">Browse the papers →</a>
     </div>
   </div>
-  <p class="faint" style="margin-top:22px">Repository: <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory" rel="noopener">github.com/WebEnvy/UnifiedFoamFieldTheory</a>
+  <p class="faint">Repository: <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory" rel="noopener">github.com/WebEnvy/UnifiedFoamFieldTheory</a>
     · Author: <a href="https://orcid.org/0009-0006-3716-5951" rel="noopener">Luke Martin, ORCID 0009-0006-3716-5951</a>
     · Not yet peer reviewed — independent reproduction invited.</p>
 </section>
@@ -132,7 +140,7 @@ python streams/education/Mathematics/verify_spectra_v2.py</pre>
   <div class="wrap">
     <div>
       <div class="sig">B + V = D</div>
-      <p class="faint" style="margin:10px 0 4px">Luke Martin · Independent Researcher · Newcastle, Australia</p>
+      <p class="faint">Luke Martin · Independent Researcher · Newcastle, Australia</p>
       <a href="https://orcid.org/0009-0006-3716-5951" rel="noopener">ORCID 0009-0006-3716-5951</a>
     </div>
     <div>
@@ -149,9 +157,10 @@ python streams/education/Mathematics/verify_spectra_v2.py</pre>
       <a href="predictions.html">Predictions</a>
       <a href="papers.html">Papers</a>
       <a href="verify.html">Verify</a>
+      <a href="shape-of-everything/">The Shape of Everything</a>
     </div>
     <div class="disc">
-      <p class="faint" style="margin:0">Text &amp; figures CC-BY 4.0 · code MIT · Priority date 20 Feb 2026 ·
+      <p class="faint">Text &amp; figures CC-BY 4.0 · code MIT · Priority date 20 Feb 2026 ·
         Framework v10 (April 2026) · Not yet peer reviewed — independent reproduction invited.</p>
     </div>
   </div>
