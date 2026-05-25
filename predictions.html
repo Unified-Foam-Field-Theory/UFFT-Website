@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Predictions — Unified Foam Field Theory</title>
+<meta name="description" content="Every UFFT result by sector — formula, status tier, and distance from experiment — plus the eleven falsifiable predictions and the conditions that would end the framework." />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="logo">B + V = D</span>
+      <span class="name">Unified Foam Field Theory</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu">Menu</button>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="predictions.html" class="active">Predictions</a>
+      <a href="papers.html">Papers</a>
+      <a href="verify.html">Verify</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory" class="ext" rel="noopener">Repository</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section style="border-bottom:none;padding-bottom:14px">
+  <div class="section-eyebrow">Predictions &amp; results</div>
+  <h2>The numbers, by sector</h2>
+  <p class="section-sub">Each row is a closed form in the cell integers, its status tier, and its
+    distance from experiment. Tiers are honest: a theorem is not a postdiction, and a suggestive
+    pattern is not a theorem.</p>
+  <div class="legend">
+    <span class="item"><span class="badge t1">Tier 1</span> mathematical theorem</span>
+    <span class="item"><span class="badge t2">Tier 2</span> derived given identifications</span>
+    <span class="item"><span class="badge t3">Tier 3</span> &gt;1.5σ tension</span>
+    <span class="item"><span class="badge t4">Tier 4</span> suggestive / speculative</span>
+  </div>
+  <div class="callout warn">
+    <p style="margin:0">The postdictions across roughly 60 observables are under an ongoing
+      look-elsewhere-corrected joint-χ² audit; the earlier "60+ observables, zero free parameters"
+      headline has been retired as not defensible against a trials-factor analysis. What is
+      pre-registered and sharp are the eleven falsifiable predictions below.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Sharpest test</div>
+  <h2>δ<sub>PMNS</sub> / δ<sub>CKM</sub> = 3</h2>
+  <p>This ratio follows from the colour factor \(C_A = 3\) alone. It is exact, parameter-free, and the
+    PMNS CP phase is exactly what DUNE is built to measure (around 2035). <strong>If the ratio is
+    confirmed ≠ 3 at &gt;3σ, the framework is falsified.</strong> No other approach makes this
+    particular prediction.</p>
+</section>
+
+<section>
+  <div class="section-eyebrow">Sector 1</div>
+  <h2>Electromagnetism &amp; electroweak</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Observable</th><th>Formula (cell integers)</th><th>Status</th><th>Distance from experiment</th></tr></thead>
+      <tbody>
+        <tr><td>α⁻¹ (fine structure)</td><td class="mono">(4π)³ᐟ²·π·[47/48 + 10/(3·48³) + 22/(3·48⁵)]</td><td><span class="badge t2">Tier 2</span></td><td class="val">137.035999055 · 0.3σ from Cs (2018)</td></tr>
+        <tr><td>sin²θ_W (geometric)</td><td class="mono">(17 − 3√17)/20</td><td><span class="badge t1">Tier 1</span></td><td class="val">0.14%</td></tr>
+        <tr><td>α_s(M_Z)</td><td class="mono">C_A² − C_A·ln(C_A)/(2π)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.01σ</td></tr>
+        <tr><td>m_H / M_Z</td><td class="mono">18/(9+√17)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.14%</td></tr>
+        <tr><td>α_GUT⁻¹</td><td class="mono">25</td><td><span class="badge t2">Tier 2</span></td><td class="val">novel — not directly measurable</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Sector 2</div>
+  <h2>Lepton &amp; neutrino masses</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Observable</th><th>Formula</th><th>Status</th><th>Distance from experiment</th></tr></thead>
+      <tbody>
+        <tr><td>Koide relation</td><td class="mono">Q = (Σm)/(Σ√m)² = 2/3</td><td><span class="badge t1">Tier 1</span></td><td class="val">exact (structural)</td></tr>
+        <tr><td>m_e</td><td class="mono">r₁·M_P·exp(−(E−F)(2Δ+√Δ)/16)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.002%</td></tr>
+        <tr><td>m_μ</td><td class="mono">Koide from m_e, θ = 2/9</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.004%</td></tr>
+        <tr><td>m_τ</td><td class="mono">Koide from m_e, θ = 2/9</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.009%</td></tr>
+        <tr><td>m₁ (lightest ν)</td><td class="mono">= 0</td><td><span class="badge t1">Tier 1</span></td><td class="val">exact theorem</td></tr>
+        <tr><td>m₃ (ν)</td><td class="mono">m_e·exp(−(11+13√17)/4)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.075%</td></tr>
+        <tr><td>Mass hierarchy</td><td class="mono">normal ordering forced</td><td><span class="badge t1">Tier 1</span></td><td class="val">theorem</td></tr>
+        <tr><td>|Δm²₃₂| / Δm²₂₁</td><td class="mono">= 33 (Eisenstein norm, 33 = S² − C_A·P)</td><td><span class="badge t4">Tier 4</span></td><td class="val">≈0.5σ · pending formal derivation</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Sector 3</div>
+  <h2>Quark mixing (CKM / Wolfenstein)</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Observable</th><th>Formula</th><th>Status</th><th>Distance from experiment</th></tr></thead>
+      <tbody>
+        <tr><td>λ (Cabibbo, NLO)</td><td class="mono">sin(π/14)·(1 + √17/363)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.22505 · 0.07σ</td></tr>
+        <tr><td>A (Wolfenstein)</td><td class="mono">(F − r₁)/F = (19+√17)/28</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.82583 · −0.015σ</td></tr>
+        <tr><td>R_b (CKM triangle)</td><td class="mono">r₁²/(r₁r₂ − 1) = (49 − 9√17)/30</td><td><span class="badge t1">Tier 1</span></td><td class="val">0.39640 · 0.36σ</td></tr>
+        <tr><td>ρ̄</td><td class="mono">R_b·cos(δ_CKM)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.15898 · −0.002σ</td></tr>
+        <tr><td>η̄</td><td class="mono">R_b·sin(δ_NLO)</td><td><span class="badge t3">Tier 3</span></td><td class="val">0.3478 · lever-arm phase residual</td></tr>
+        <tr><td>δ_CKM</td><td class="mono">inter-type torsion operator, (C_A−1):1</td><td><span class="badge t2">Tier 2</span></td><td class="val">66.36° · 0.25σ</td></tr>
+        <tr><td>m_d / m_s</td><td class="mono">sin²(π/14)</td><td><span class="badge t2">Tier 2</span></td><td class="val">1.0%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Sector 4</div>
+  <h2>Neutrino mixing (PMNS)</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Observable</th><th>Formula</th><th>Status</th><th>Distance from experiment</th></tr></thead>
+      <tbody>
+        <tr><td>tan²θ₁₂</td><td class="mono">(√17/9)(1 − √17/144)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.44501 · 0.074σ</td></tr>
+        <tr><td>sin²θ₂₃</td><td class="mono">1/2 + √17/81</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.5509 · 0.2σ</td></tr>
+        <tr><td>sin²θ₁₃</td><td class="mono">(√17/27)²(1 − √17/162)²</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.02215 · 0.2σ</td></tr>
+        <tr><td>δ_PMNS</td><td class="mono">3πR = 200.7°</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.15σ (±25°)</td></tr>
+        <tr><td>δ_PMNS / δ_CKM</td><td class="mono">= 3 (colour factor C_A)</td><td><span class="badge t1">Tier 1</span></td><td class="val">novel — testable by DUNE ~2035</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Sector 5</div>
+  <h2>Gravity &amp; cosmology</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Observable</th><th>Formula / origin</th><th>Status</th><th>Distance from experiment</th></tr></thead>
+      <tbody>
+        <tr><td>Ω_DM / Ω_b</td><td class="mono">3(1 + 2√3)/2⁴ᐟ³ = 5.3147</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.92% (Planck 2018)</td></tr>
+        <tr><td>ρ_Λ (dark energy)</td><td class="mono">ρ₀(l_P/R_U)² × 6/7</td><td><span class="badge t2">Tier 2</span></td><td class="val">1.4% (Planck 2018)</td></tr>
+        <tr><td>r_p (proton radius)</td><td class="mono">4ℏ/(m_p c)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.02%</td></tr>
+        <tr><td>Bekenstein area quantum k</td><td class="mono">= C_A = 3</td><td><span class="badge t1">Tier 1</span></td><td class="val">exact</td></tr>
+        <tr><td>Schwarzschild g_tt, g_rr</td><td class="mono">covariant vacuum density, ν = 1/2</td><td><span class="badge t2">Tier 2</span></td><td class="val">exact match to GR</td></tr>
+        <tr><td>Einstein equations</td><td class="mono">unimodular, from foam action</td><td><span class="badge t2">Tier 2</span></td><td class="val">consistent with all GR tests</td></tr>
+        <tr><td>Maxwell equations (all 4)</td><td class="mono">□D = 0 + Helmholtz + Volterra</td><td><span class="badge t2">Tier 2</span></td><td class="val">exact</td></tr>
+        <tr><td>Friedmann equations (both)</td><td class="mono">foam energy conservation</td><td><span class="badge t2">Tier 2</span></td><td class="val">exact</td></tr>
+        <tr><td>Cosmological constant</td><td class="mono">Λ = integration constant (dissolved)</td><td><span class="badge t4">Tier 4</span></td><td class="val">resolves the 10¹²³ discrepancy</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Falsifiability</div>
+  <h2>What would end it</h2>
+  <p class="section-sub">The framework is rigid: changing any cell integer by ±1 moves a headline number
+    by ≥1%, so there is nowhere to hide. Any one of these falsifies it.</p>
+  <div class="callout kill">
+    <ol style="margin:0;padding-left:20px;line-height:1.9">
+      <li>A confirmed dark-matter particle (LZ / XENON / ADMX) — UFFT says dark matter is lattice anisotropy.</li>
+      <li>A confirmed supersymmetric partner at any energy — fourteen faces leave no room.</li>
+      <li>α⁻¹ measured outside 137.035999055 ± ~4×10⁻⁹, or the rubidium value confirmed past 3σ.</li>
+      <li>δ_PMNS / δ_CKM confirmed ≠ 3 at &gt;3σ (DUNE).</li>
+      <li>Vacuum structure shown not to be the truncated octahedron — it is the unique Kelvin solution, so this removes the geometric inputs entirely.</li>
+      <li>The altitude-dependent decoherence ratio Γ(r)/Γ(∞) = 1 − 2GM/rc² returning a null result at the predicted magnitude.</li>
+    </ol>
+  </div>
+  <p class="faint">The full eleven pre-registered predictions and all derivations are in the
+    <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/UFFT_Core_Framework_v9.md" rel="noopener">Core Framework</a>.
+    To recompute the spectrum these rest on, see <a href="verify.html">Verify</a>.</p>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="sig">B + V = D</div>
+      <p class="faint" style="margin:10px 0 4px">Luke Martin · Independent Researcher · Newcastle, Australia</p>
+      <a href="https://orcid.org/0009-0006-3716-5951" rel="noopener">ORCID 0009-0006-3716-5951</a>
+    </div>
+    <div>
+      <h4>Repository</h4>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory" rel="noopener">GitHub</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/UFFT_Core_Framework_v9.md" rel="noopener">Core Framework</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/From_Foam_to_Fermions.md" rel="noopener">From Foam to Fermions (book)</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/papers/INDEX.md" rel="noopener">Papers index (DOIs)</a>
+    </div>
+    <div>
+      <h4>On this site</h4>
+      <a href="index.html">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="predictions.html">Predictions</a>
+      <a href="papers.html">Papers</a>
+      <a href="verify.html">Verify</a>
+    </div>
+    <div class="disc">
+      <p class="faint" style="margin:0">Text &amp; figures CC-BY 4.0 · code MIT · Priority date 20 Feb 2026 ·
+        Framework v10 (April 2026) · Not yet peer reviewed — independent reproduction invited.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="assets/site.js"></script>
+<script>
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ], throwOnError: false
+  });
+</script>
+</body>
+</html>

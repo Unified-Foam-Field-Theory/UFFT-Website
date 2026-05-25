@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Theory — Unified Foam Field Theory</title>
+<meta name="description" content="From Axiom Zero to the Standard Model: the Kelvin cell, its face Laplacian, the eigenvalue spectrum, and the master equation λ²−9λ+16=0." />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="logo">B + V = D</span>
+      <span class="name">Unified Foam Field Theory</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu">Menu</button>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="theory.html" class="active">Theory</a>
+      <a href="predictions.html">Predictions</a>
+      <a href="papers.html">Papers</a>
+      <a href="verify.html">Verify</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory" class="ext" rel="noopener">Repository</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section style="border-bottom:none;padding-bottom:18px">
+  <div class="section-eyebrow">Theory</div>
+  <h2>From one axiom to the Standard Model</h2>
+  <p class="section-sub">The whole framework hangs on a single eigenvalue spectrum. Every step
+    below is integer-rigid: nothing is fitted, and changing a cell integer changes the answer.</p>
+</section>
+
+<section>
+  <div class="chain">
+    <div class="step">
+      <div class="dot">0</div>
+      <div>
+        <h3>Axiom Zero — <span class="mono">B + V = D</span></h3>
+        <p class="muted">Space is an infinite pre-existing foam at the Planck scale. Every event is a
+          <em>displacement</em> in that foam: a bubble plus a void equals a displacement. There is a
+          lowest level, and it is geometric — particles are modes of the cell, not objects inside it.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="dot">1</div>
+      <div>
+        <h3>Space-filling forces the Kelvin cell</h3>
+        <p class="muted">Partition space into equal-volume cells at minimum interfacial area and the
+          cell is not a choice — it is the <strong>truncated octahedron</strong> (Kelvin's solution).
+          Among the five Fedorov parallelohedra it is singled out by its face-Laplacian spectrum, a
+          uniqueness shown in the framework's spectral-uniqueness result.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="dot">2</div>
+      <div>
+        <h3>The integers are the only inputs</h3>
+        <p class="muted">Everything downstream is built from the cell's topology — its symmetry order,
+          vertices, edges and faces. These are the table below; there are no other free quantities.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="dot">3</div>
+      <div>
+        <h3>The face Laplacian</h3>
+        <p class="muted">Treat the 14 faces as nodes. Two faces are adjacent when they share an edge:
+          each square touches the four hexagons around it, each hexagon touches three squares and three
+          hexagons. The face Laplacian is \(L = D - A\). Its spectrum is fixed, and it is the engine of
+          the whole theory.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="dot">4</div>
+      <div>
+        <h3>The master equation</h3>
+        <p class="muted">The two \(T_{1u}\) eigenvalues — the left- and right-handed fermion modes —
+          are the roots of \(\lambda^2 - 9\lambda + 16 = 0\). Its discriminant is \(\Delta = 17\)
+          (prime), and \(\sqrt{17}\) threads through nearly every Standard Model ratio that follows.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="dot">5</div>
+      <div>
+        <h3>Read off the Standard Model</h3>
+        <p class="muted">The fine-structure constant comes from \(O_h\) representation theory; the weak
+          mixing angle, the Higgs-to-Z ratio, the lepton masses (via Koide), and the CKM/PMNS mixing
+          sectors all follow from the same spectrum. See <a href="predictions.html">Predictions</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Inputs</div>
+  <h2>Core integers of the cell</h2>
+  <p class="section-sub">Every input to every formula on this site is one of these. They are
+    properties of the truncated octahedron, not adjustable constants.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Symbol</th><th>Value</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">|O_h|</td><td class="val">48</td><td>Order of the octahedral symmetry group</td></tr>
+        <tr><td class="mono">V</td><td class="val">24</td><td>Vertices</td></tr>
+        <tr><td class="mono">E</td><td class="val">36</td><td>Edges</td></tr>
+        <tr><td class="mono">F</td><td class="val">14</td><td>Faces (8 hexagonal + 6 square)</td></tr>
+        <tr><td class="mono">d</td><td class="val">3</td><td>Spatial dimensions</td></tr>
+        <tr><td class="mono">Δ</td><td class="val">17</td><td>Discriminant of the master equation (prime)</td></tr>
+        <tr><td class="mono">C_A</td><td class="val">3</td><td>Colour number (= F_hx/F − 1, natural normalisation)</td></tr>
+        <tr><td class="mono">r₁</td><td class="val">(9−√17)/2 ≈ 2.438</td><td>Lower T₁u eigenvalue — left-handed fermions</td></tr>
+        <tr><td class="mono">r₂</td><td class="val">(9+√17)/2 ≈ 6.562</td><td>Upper T₁u eigenvalue — right-handed fermions</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">The spectrum</div>
+  <h2>Eigenvalues of the face Laplacian</h2>
+  <p class="section-sub">Fourteen faces give fourteen eigenvalues, grouped by \(O_h\) irrep. Bar height is
+    multiplicity. This is exactly what the twelve-line script on the <a href="verify.html">Verify</a>
+    page prints — hover any bar for its role.</p>
+  <div class="viz">
+    <div id="spectrum-chart"></div>
+    <div class="cap">L = D − A on the 14 faces. Spectrum: 0, r₁(×3), 4(×2), r₂(×3), 7(×4), 9 — with r₁,r₂ = (9∓√17)/2.</div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">The master equation</div>
+  <h2><span class="mono">λ² − 9λ + 16 = 0</span></h2>
+  <p class="section-sub">The \(T_{1u}\) doublet sits at the roots of one quadratic. Sum of roots
+    \(r_1 + r_2 = 9\); product \(r_1 r_2 = 16\); discriminant \(\Delta = 81 - 64 = 17\). The prime 17
+    is not chosen — it falls out of the face counts.</p>
+  <div class="viz">
+    <div id="parabola-chart"></div>
+    <div class="cap">Roots r₁ = (9−√17)/2 ≈ 2.438 and r₂ = (9+√17)/2 ≈ 6.562 — the left- and right-handed fermion modes.</div>
+  </div>
+  <div class="callout">
+    <p style="margin:0">Because \(\sqrt{17}\) enters here, it reappears in \(\sin^2\theta_W = (17-3\sqrt{17})/20\),
+      in \(m_H/M_Z = 18/(9+\sqrt{17})\), in the Cabibbo angle, and across the mixing sector. One quadratic,
+      threaded through the whole Standard Model.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">The modes</div>
+  <h2>What each eigenvalue looks like</h2>
+  <p class="section-sub">The spectrum isn't abstract: each eigenvalue is a standing wave on the cell's
+    14 faces, and the framework identifies each with a Standard Model sector. Pick a mode — outward
+    motion is amber, inward is teal, nodes stay dark. Drag to rotate, scroll to zoom.</p>
+  <div class="viz">
+    <div class="eigen-modes" id="eigen-modes"></div>
+    <div class="eigen-stage">
+      <canvas id="eigen-canvas"></canvas>
+      <div class="eigen-ev" id="eigen-ev"></div>
+    </div>
+    <div class="eigen-ctrls">
+      <div class="eigen-legend">
+        <span class="li"><span class="sw" style="background:#f0b429"></span>outward (push)</span>
+        <span class="li"><span class="sw" style="background:#5ad1c8"></span>inward (pull)</span>
+        <span class="li"><span class="sw" style="background:#1a212c;border:1px solid #2e3c52"></span>node (still)</span>
+      </div>
+      <label>Amplitude <input type="range" id="eigen-amp" min="0" max="100" value="55" /></label>
+      <label>Speed <input type="range" id="eigen-spd" min="1" max="100" value="30" /></label>
+    </div>
+    <div class="eigen-info" id="eigen-info"></div>
+    <div class="cap">Membrane-subdivided Kelvin cell · ω ∝ √λ · the A₂u → Higgs identification is a Tier-1
+      theorem; the gauge-sector identifications are Tier 2 (derived given identifications).</div>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="sig">B + V = D</div>
+      <p class="faint" style="margin:10px 0 4px">Luke Martin · Independent Researcher · Newcastle, Australia</p>
+      <a href="https://orcid.org/0009-0006-3716-5951" rel="noopener">ORCID 0009-0006-3716-5951</a>
+    </div>
+    <div>
+      <h4>Repository</h4>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory" rel="noopener">GitHub</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/UFFT_Core_Framework_v9.md" rel="noopener">Core Framework</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/From_Foam_to_Fermions.md" rel="noopener">From Foam to Fermions (book)</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/papers/INDEX.md" rel="noopener">Papers index (DOIs)</a>
+    </div>
+    <div>
+      <h4>On this site</h4>
+      <a href="index.html">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="predictions.html">Predictions</a>
+      <a href="papers.html">Papers</a>
+      <a href="verify.html">Verify</a>
+    </div>
+    <div class="disc">
+      <p class="faint" style="margin:0">Text &amp; figures CC-BY 4.0 · code MIT · Priority date 20 Feb 2026 ·
+        Framework v10 (April 2026) · Not yet peer reviewed — independent reproduction invited.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/eigenmode.js"></script>
+<script>
+  var AXIS = "#9aa7b8", GRID = "rgba(36,48,67,0.6)", TEAL = "#5ad1c8", AMBER = "#f0b429";
+  var common = {
+    paper_bgcolor: "rgba(0,0,0,0)", plot_bgcolor: "rgba(0,0,0,0)",
+    font: { color: AXIS, family: "ui-monospace, Menlo, Consolas, monospace", size: 12 },
+    margin: { l: 50, r: 20, t: 16, b: 46 }
+  };
+  var cfg = { displayModeBar: false, responsive: true };
+
+  // --- eigenvalue spectrum ---
+  var eig = [
+    { x: "0",      m: 1, irrep: "A₁g — uniform mode (zero mode)" },
+    { x: "2.438",  m: 3, irrep: "T₁u (r₁) — left-handed fermions" },
+    { x: "4",      m: 2, irrep: "Eg — square/hex split" },
+    { x: "6.562",  m: 3, irrep: "T₁u (r₂) — right-handed fermions" },
+    { x: "7",      m: 4, irrep: "T₂g + A₂u — colour / Higgs sector" },
+    { x: "9",      m: 1, irrep: "A₂u complement — top of spectrum" }
+  ];
+  Plotly.newPlot("spectrum-chart", [{
+    type: "bar",
+    x: eig.map(function(d){return d.x;}),
+    y: eig.map(function(d){return d.m;}),
+    marker: { color: ["#3a4a5e", TEAL, "#7aa7c7", AMBER, "#9a7bd0", "#3a4a5e"],
+              line: { color: "#0b1017", width: 1 } },
+    text: eig.map(function(d){return "×"+d.m;}),
+    textposition: "outside",
+    textfont: { color: AXIS },
+    hovertext: eig.map(function(d){return d.irrep;}),
+    hovertemplate: "λ = %{x}<br>multiplicity %{y}<br>%{hovertext}<extra></extra>"
+  }], Object.assign({}, common, {
+    xaxis: { title: "eigenvalue λ", gridcolor: GRID, zeroline: false },
+    yaxis: { title: "multiplicity", gridcolor: GRID, dtick: 1, range: [0, 5] }
+  }), cfg);
+
+  // --- master-equation parabola ---
+  var xs = [], ys = [];
+  for (var x = 0; x <= 9.0001; x += 0.05) { xs.push(x); ys.push(x*x - 9*x + 16); }
+  var r1 = (9 - Math.sqrt(17)) / 2, r2 = (9 + Math.sqrt(17)) / 2;
+  Plotly.newPlot("parabola-chart", [
+    { x: xs, y: ys, mode: "lines", line: { color: TEAL, width: 2.5 },
+      hovertemplate: "λ = %{x:.2f}<br>f(λ) = %{y:.2f}<extra></extra>", name: "λ²−9λ+16" },
+    { x: [r1, r2], y: [0, 0], mode: "markers+text", marker: { color: AMBER, size: 11 },
+      text: ["r₁ ≈ 2.438", "r₂ ≈ 6.562"], textposition: "top center",
+      textfont: { color: AMBER }, hoverinfo: "skip", name: "roots" }
+  ], Object.assign({}, common, {
+    showlegend: false,
+    xaxis: { title: "λ", gridcolor: GRID, zeroline: false },
+    yaxis: { title: "λ² − 9λ + 16", gridcolor: GRID, zerolinecolor: "rgba(154,167,184,0.5)" }
+  }), cfg);
+
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ], throwOnError: false
+  });
+</script>
+</body>
+</html>

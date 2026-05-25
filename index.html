@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Unified Foam Field Theory — the Standard Model from one cell of foam</title>
+<meta name="description" content="UFFT derives the dimensionless constants of the Standard Model, general relativity and cosmology from the geometry of a single Planck-scale cell — the truncated octahedron. Zero fitted constants. Eleven falsifiable predictions." />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="logo">B + V = D</span>
+      <span class="name">Unified Foam Field Theory</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu">Menu</button>
+    <nav class="links">
+      <a href="index.html" class="active">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="predictions.html">Predictions</a>
+      <a href="papers.html">Papers</a>
+      <a href="verify.html">Verify</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory" class="ext" rel="noopener">Repository</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">Independent research · Not yet peer reviewed</div>
+      <h1 class="title">The Standard Model from <span class="em">one cell of foam</span>.</h1>
+      <p class="lede">UFFT derives the dimensionless constants of the Standard Model, general
+        relativity and cosmology from the geometry of a single Planck-scale cell — the
+        truncated octahedron, the unique solution to Kelvin's space-filling problem.
+        No constant in the spectrum is fitted.</p>
+      <div class="axiom">
+        <span>B + V = D</span>
+        <span class="tag">Axiom Zero — Bubble + Void = Displacement</span>
+      </div>
+      <div class="btnrow">
+        <a class="btn primary" href="predictions.html">See the predictions</a>
+        <a class="btn ghost" href="verify.html">Reproduce it in 12 lines</a>
+      </div>
+    </div>
+    <div class="hero-canvas-wrap">
+      <canvas id="foam-canvas"></canvas>
+      <div class="hero-canvas-cap">Kelvin cell · 24 vertices · 36 edges · 14 faces (8 hex + 6 square) · drag to rotate</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<section>
+  <div class="section-eyebrow">At a glance</div>
+  <h2>Four numbers</h2>
+  <p class="section-sub">Each is computed from the integer topology of the cell. Full derivations
+    on the <a href="theory.html">Theory</a> page; every value, with its status tier and
+    distance from experiment, on <a href="predictions.html">Predictions</a>.</p>
+  <div class="kpis">
+    <div class="kpi">
+      <div class="v">137.035999</div>
+      <div class="k">α⁻¹, fine-structure constant</div>
+      <div class="s">0.3σ from Cs (2018) · from cell integers</div>
+    </div>
+    <div class="kpi">
+      <div class="v">= 3</div>
+      <div class="k">δ<sub>PMNS</sub> / δ<sub>CKM</sub></div>
+      <div class="s">exact, parameter-free · DUNE ~2035</div>
+    </div>
+    <div class="kpi">
+      <div class="v">0</div>
+      <div class="k">fitted constants in the spectrum</div>
+      <div class="s">every input is a topological integer</div>
+    </div>
+    <div class="kpi">
+      <div class="v">11</div>
+      <div class="k">pre-registered falsifiable predictions</div>
+      <div class="s">any one of them can end the framework</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">The claim, precisely</div>
+  <h2>One axiom, one polyhedron, integer inputs</h2>
+  <p>Treat space as an infinite pre-existing foam at the Planck scale. Every event is a
+    displacement in that foam: <code class="inline">B + V = D</code>. Fill space with equal
+    cells at minimum surface area and the cell is forced — it is the truncated octahedron
+    (Kelvin cell). Its <strong>face Laplacian</strong> has a spectrum fixed entirely by the
+    cell's integers: \(|O_h| = 48\), \(V = 24\), \(E = 36\), \(F = 14\) (8 hexagons, 6 squares),
+    \(d = 3\). The Standard Model's dimensionless ratios are read off that spectrum.</p>
+
+  <div class="callout warn">
+    <h3>An honest scope statement</h3>
+    <p style="margin-bottom:0">The earlier framing — "60+ observables with zero free parameters" —
+      has been <strong>retired</strong>: it does not survive a trials-factor (look-elsewhere) audit.
+      What stands is a set of <strong>eleven pre-registered falsifiable predictions</strong> and a
+      family of structural identities of varying derivational status, now under an ongoing
+      look-elsewhere-corrected joint-χ² audit. Claims on this site are tagged by a four-tier
+      status scheme so you can see exactly how far each one is established.</p>
+  </div>
+
+  <div class="legend">
+    <span class="item"><span class="badge t1">Tier 1</span> mathematical theorem</span>
+    <span class="item"><span class="badge t2">Tier 2</span> derived given identifications</span>
+    <span class="item"><span class="badge t3">Tier 3</span> &gt;1.5σ tension</span>
+    <span class="item"><span class="badge t4">Tier 4</span> suggestive / speculative</span>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Falsifiability</div>
+  <h2>How to kill it</h2>
+  <p class="section-sub">The framework is rigid: changing any cell integer by ±1 moves a headline
+    number by ≥1%. That rigidity is the point — here is what a single measurement would have to do.</p>
+  <div class="cards">
+    <div class="card">
+      <span class="num">01</span>
+      <h3>Find a dark-matter particle</h3>
+      <p class="muted">UFFT says dark matter is lattice anisotropy, not a particle —
+        LZ, XENON and ADMX stay empty. One confirmed WIMP or axion and the picture is wrong.</p>
+    </div>
+    <div class="card">
+      <span class="num">02</span>
+      <h3>Find supersymmetry</h3>
+      <p class="muted">Fourteen faces give exactly the Standard Model gauge content, with no
+        room for superpartners. A single confirmed sparticle, at any energy, falsifies it.</p>
+    </div>
+    <div class="card">
+      <span class="num">03</span>
+      <h3>Pin α to rubidium</h3>
+      <p class="muted">\(\alpha^{-1} = 137.035999055\): 0.3σ from the caesium value, 1.4σ from
+        rubidium. Confirm the rubidium value past 3σ and the closed form is dead.</p>
+    </div>
+    <div class="card">
+      <span class="num">04</span>
+      <h3>Break the colour ratio</h3>
+      <p class="muted">\(\delta_{PMNS}/\delta_{CKM} = 3\) exactly, from the colour factor \(C_A=3\).
+        DUNE measures \(\delta_{PMNS}\). A confirmed ratio ≠ 3 at &gt;3σ ends it.</p>
+    </div>
+  </div>
+  <div class="btnrow">
+    <a class="btn ghost" href="theory.html">Follow the derivation →</a>
+    <a class="btn ghost" href="verify.html">Run the spectrum yourself →</a>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="sig">B + V = D</div>
+      <p class="faint" style="margin:10px 0 4px">Luke Martin · Independent Researcher · Newcastle, Australia</p>
+      <a href="https://orcid.org/0009-0006-3716-5951" rel="noopener">ORCID 0009-0006-3716-5951</a>
+    </div>
+    <div>
+      <h4>Repository</h4>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory" rel="noopener">GitHub</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/UFFT_Core_Framework_v9.md" rel="noopener">Core Framework</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/From_Foam_to_Fermions.md" rel="noopener">From Foam to Fermions (book)</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/papers/INDEX.md" rel="noopener">Papers index (DOIs)</a>
+    </div>
+    <div>
+      <h4>On this site</h4>
+      <a href="index.html">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="predictions.html">Predictions</a>
+      <a href="papers.html">Papers</a>
+      <a href="verify.html">Verify</a>
+    </div>
+    <div class="disc">
+      <p class="faint" style="margin:0">Text &amp; figures CC-BY 4.0 · code MIT · Priority date 20 Feb 2026 ·
+        Framework v10 (April 2026) · Not yet peer reviewed — independent reproduction invited.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="assets/foam.js"></script>
+<script src="assets/site.js"></script>
+<script>
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ], throwOnError: false
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Verify — Unified Foam Field Theory</title>
+<meta name="description" content="Reproduce the eigenvalue spectrum UFFT rests on in twelve lines of NumPy. Full verification scripts, Zenodo DOIs, and the repository." />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="logo">B + V = D</span>
+      <span class="name">Unified Foam Field Theory</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu">Menu</button>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="predictions.html">Predictions</a>
+      <a href="papers.html">Papers</a>
+      <a href="verify.html" class="active">Verify</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory" class="ext" rel="noopener">Repository</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section style="border-bottom:none;padding-bottom:14px">
+  <div class="section-eyebrow">Verify</div>
+  <h2>Don't take it on faith — run it</h2>
+  <p class="section-sub">The entire framework rests on one eigenvalue spectrum. Here it is in twelve
+    lines of NumPy, no external data. If these numbers don't come out, the framework is wrong — so
+    check them first.</p>
+</section>
+
+<section>
+  <h3 style="margin-top:0">The spectrum in twelve lines</h3>
+  <div class="code-wrap">
+    <button class="copy-btn" data-target="#spectrum-code">copy</button>
+    <pre id="spectrum-code"><span class="kw">import</span> numpy <span class="kw">as</span> np
+
+<span class="cm"># 14 face normals: 6 squares (±axes) + 8 hexagons (±±± body diagonals)</span>
+normals = np.vstack([np.eye(<span class="st">3</span>), -np.eye(<span class="st">3</span>),
+    np.array([[i,j,k] <span class="kw">for</span> i <span class="kw">in</span> [<span class="st">1</span>,-<span class="st">1</span>] <span class="kw">for</span> j <span class="kw">in</span> [<span class="st">1</span>,-<span class="st">1</span>] <span class="kw">for</span> k <span class="kw">in</span> [<span class="st">1</span>,-<span class="st">1</span>]])/np.sqrt(<span class="st">3</span>)])
+
+<span class="cm"># adjacency: square–hex share an edge (cosθ = 1/√3); hex–hex share an edge (cosθ = 1/3)</span>
+A = np.array([[<span class="st">1</span> <span class="kw">if</span> (i&lt;<span class="st">6</span>)!=(j&lt;<span class="st">6</span>) <span class="kw">and</span> abs(np.dot(normals[i],normals[j])-<span class="st">1</span>/np.sqrt(<span class="st">3</span>))&lt;<span class="st">0.01</span>
+               <span class="kw">else</span> (<span class="st">1</span> <span class="kw">if</span> i&gt;=<span class="st">6</span> <span class="kw">and</span> j&gt;=<span class="st">6</span> <span class="kw">and</span> abs(np.dot(normals[i],normals[j])-<span class="st">1</span>/<span class="st">3</span>)&lt;<span class="st">0.01</span>
+               <span class="kw">else</span> <span class="st">0</span>) <span class="kw">for</span> j <span class="kw">in</span> range(<span class="st">14</span>)] <span class="kw">for</span> i <span class="kw">in</span> range(<span class="st">14</span>)])
+
+L = np.diag(A.sum(<span class="st">1</span>)) - A           <span class="cm"># face Laplacian:  L = D − A</span>
+print(np.round(np.linalg.eigvalsh(L.astype(float)), <span class="st">4</span>))
+
+<span class="cm"># → [0  2.4384 2.4384 2.4384  4  4  6.5616 6.5616 6.5616  7  7  7  7  9]</span></pre>
+  </div>
+  <div class="callout">
+    <p style="margin:0">Expected output — the spectrum every result is read from:</p>
+    <pre style="margin-top:10px"><span class="st">[-0.      2.4384  2.4384  2.4384  4.      4.      6.5616  6.5616  6.5616
+  7.      7.      7.      7.      9.    ]</span></pre>
+    <p class="faint" style="margin:8px 0 0">The roots 2.4384 and 6.5616 are (9∓√17)/2 — the master equation
+      λ²−9λ+16 = 0. The −0.0 is the floating-point print of the exact zero mode.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Full reproduction</h2>
+  <p class="section-sub">Every number in the repository recomputes from the cell integers alone — no
+    fitted constants, no imported data. Both scripts below run in under a minute.</p>
+  <div class="code-wrap">
+    <button class="copy-btn" data-target="#repro-code">copy</button>
+    <pre id="repro-code"><span class="cm"># clone and install</span>
+git clone https://github.com/WebEnvy/UnifiedFoamFieldTheory
+cd UnifiedFoamFieldTheory
+pip install numpy scipy
+
+<span class="cm"># the full spectrum verification</span>
+python verification/19079730_UFFT_Spectrum_Verification.py
+
+<span class="cm"># spectral uniqueness of the Kelvin cell among the 5 Fedorov parallelohedra</span>
+python streams/education/Mathematics/verify_spectra_v2.py</pre>
+  </div>
+  <p class="faint">The second script reproduces all five Fedorov-cell face-Laplacian spectra and the
+    identities that single out the truncated octahedron — the uniqueness the theory depends on.</p>
+</section>
+
+<section>
+  <div class="section-eyebrow">Sources</div>
+  <h2>Read the full work</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Core Framework</h3>
+      <p class="muted">Every derivation, all 77 parts, the full status table and the eleven predictions.</p>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/UFFT_Core_Framework_v9.md" rel="noopener">Open the framework →</a>
+    </div>
+    <div class="card">
+      <h3>From Foam to Fermions</h3>
+      <p class="muted">The self-contained book — 44 chapters, narrative plus theorems, for a careful reader.</p>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/From_Foam_to_Fermions.md" rel="noopener">Open the book →</a>
+    </div>
+    <div class="card">
+      <h3>Papers &amp; DOIs</h3>
+      <p class="muted">Every UFFT paper is open-access on Zenodo with a permanent DOI, one per result. Browse the full record by sector.</p>
+      <a href="papers.html">Browse the papers →</a>
+    </div>
+  </div>
+  <p class="faint" style="margin-top:22px">Repository: <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory" rel="noopener">github.com/WebEnvy/UnifiedFoamFieldTheory</a>
+    · Author: <a href="https://orcid.org/0009-0006-3716-5951" rel="noopener">Luke Martin, ORCID 0009-0006-3716-5951</a>
+    · Not yet peer reviewed — independent reproduction invited.</p>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="sig">B + V = D</div>
+      <p class="faint" style="margin:10px 0 4px">Luke Martin · Independent Researcher · Newcastle, Australia</p>
+      <a href="https://orcid.org/0009-0006-3716-5951" rel="noopener">ORCID 0009-0006-3716-5951</a>
+    </div>
+    <div>
+      <h4>Repository</h4>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory" rel="noopener">GitHub</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/UFFT_Core_Framework_v9.md" rel="noopener">Core Framework</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/From_Foam_to_Fermions.md" rel="noopener">From Foam to Fermions (book)</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/papers/INDEX.md" rel="noopener">Papers index (DOIs)</a>
+    </div>
+    <div>
+      <h4>On this site</h4>
+      <a href="index.html">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="predictions.html">Predictions</a>
+      <a href="papers.html">Papers</a>
+      <a href="verify.html">Verify</a>
+    </div>
+    <div class="disc">
+      <p class="faint" style="margin:0">Text &amp; figures CC-BY 4.0 · code MIT · Priority date 20 Feb 2026 ·
+        Framework v10 (April 2026) · Not yet peer reviewed — independent reproduction invited.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="assets/site.js"></script>
+<script>
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ], throwOnError: false
+  });
+</script>
+</body>
+</html>

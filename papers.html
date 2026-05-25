@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Papers — Unified Foam Field Theory</title>
+<meta name="description" content="The complete UFFT publication record on Zenodo — every paper with a one-line result and a permanent DOI link." />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="logo">B + V = D</span>
+      <span class="name">Unified Foam Field Theory</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu">Menu</button>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="predictions.html">Predictions</a>
+      <a href="papers.html" class="active">Papers</a>
+      <a href="verify.html">Verify</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory" class="ext" rel="noopener">Repository</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section style="border-bottom:none;padding-bottom:14px">
+  <div class="section-eyebrow">Publication record</div>
+  <h2>Every paper, on Zenodo</h2>
+  <p class="section-sub">The complete UFFT record — each paper open-access with a permanent DOI, one per
+    Zenodo entry, grouped by sector. The one-line result is the headline finding; follow the DOI for the
+    full derivation. Search filters by title, result, number or part.</p>
+  <div class="papers-bar">
+    <input type="search" id="paper-search" class="paper-search" placeholder="Search papers — e.g. CKM, Koide, α, confinement…" />
+    <span class="paper-count" id="paper-count"></span>
+  </div>
+</section>
+
+<div id="papers-root"></div>
+
+<section>
+  <p class="faint">Numbering note: the Applied-Technologies stream is confidential and excluded from the
+    public sequence, so a few integers are absent by design. The authoritative catalogue with parts and
+    cross-references is
+    <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/papers/INDEX.md" rel="noopener">papers/INDEX.md</a>.</p>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="sig">B + V = D</div>
+      <p class="faint" style="margin:10px 0 4px">Luke Martin · Independent Researcher · Newcastle, Australia</p>
+      <a href="https://orcid.org/0009-0006-3716-5951" rel="noopener">ORCID 0009-0006-3716-5951</a>
+    </div>
+    <div>
+      <h4>Repository</h4>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory" rel="noopener">GitHub</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/UFFT_Core_Framework_v9.md" rel="noopener">Core Framework</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/From_Foam_to_Fermions.md" rel="noopener">From Foam to Fermions (book)</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory/blob/main/papers/INDEX.md" rel="noopener">Papers index (DOIs)</a>
+    </div>
+    <div>
+      <h4>On this site</h4>
+      <a href="index.html">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="predictions.html">Predictions</a>
+      <a href="papers.html">Papers</a>
+      <a href="verify.html">Verify</a>
+    </div>
+    <div class="disc">
+      <p class="faint" style="margin:0">Text &amp; figures CC-BY 4.0 · code MIT · Priority date 20 Feb 2026 ·
+        Framework v10 (April 2026) · Not yet peer reviewed — independent reproduction invited.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+/* Source of truth: papers/INDEX.md. One entry per Zenodo record. */
+var PAPERS = [
+  // Foundations & axiom
+  {n:"5",  part:"IX",    id:"19030062", cat:"Foundations & axiom", title:"Face Laplacian Spectrum", sum:"The full spectrum Spec(L) = {0, (9−√17)/2 ×3, 4 ×2, (9+√17)/2 ×3, 7 ×4, 9} — the 14 eigenvalues everything is read from."},
+  {n:"16", part:"XVIII", id:"19064359", cat:"Foundations & axiom", title:"Master Equation", sum:"λ²−9λ+16 = 0, discriminant Δ = 17, colour number C_A = 3."},
+  {n:"—",  part:"",      id:"19363008", cat:"Foundations & axiom", title:"Local Decision Dynamics", sum:"The local decision principle and eight structural results."},
+  {n:"48", part:"",      id:"19662029", cat:"Foundations & axiom", title:"The Standard Model From One Matrix (v2)", sum:"S = ψ†L_Tψ yields the full Standard Model Lagrangian."},
+  {n:"50", part:"",      id:"19662068", cat:"Foundations & axiom", title:"Uniqueness of the Foam Cell (v2)", sum:"The truncated octahedron is unique among Fedorov cells (Δ = 17 prime)."},
+  {n:"59", part:"",      id:"19491095", cat:"Foundations & axiom", title:"The Central Theorem", sum:"BCC lattice → Standard Model + general relativity, all parameters from seven integers."},
+  {n:"60", part:"",      id:"19491125", cat:"Foundations & axiom", title:"Four Closing Theorems", sum:"Anomaly cancellation, generations, gravity, and the continuum limit."},
+  {n:"63", part:"LXIII", id:"19624955", cat:"Foundations & axiom", title:"Pure Mathematics of the Kelvin Cell", sum:"Face-Laplacian spectrum, O_h irreps, the Q(√17) ring, Fedorov uniqueness — standalone Tier 1."},
+
+  // Fine-structure constant
+  {n:"3",  part:"IX",    id:"19308917", cat:"Fine-structure constant", title:"The Fine-Structure Constant (v4)", sum:"α⁻¹ = 137.035999055 (0.21 ppb) — complete derivation. Versions v1–v4 on record."},
+  {n:"22", part:"",      id:"19084565", cat:"Fine-structure constant", title:"D-Mode Path Integral", sum:"α as the heat-kernel partition function Z_D on the face graph."},
+
+  // g-2
+  {n:"21", part:"",      id:"19080011", cat:"Anomalous moment (g−2)", title:"g−2: Schwinger Term", sum:"(g−2)/2 = α/(2π) from the foam."},
+  {n:"23", part:"",      id:"19084710", cat:"Anomalous moment (g−2)", title:"g−2: Two-Loop C₂", sum:"Structural identification of the C₂ coefficient."},
+  {n:"24", part:"",      id:"19084873", cat:"Anomalous moment (g−2)", title:"g−2: C₂ Complete", sum:"Full two-loop derivation."},
+  {n:"26", part:"",      id:"19085997", cat:"Anomalous moment (g−2)", title:"C₂ Corrigendum", sum:"Independent derivation; agreement to 3×10⁻¹⁶."},
+  {n:"27", part:"",      id:"19102302", cat:"Anomalous moment (g−2)", title:"Rational-Term Closure", sum:"197/144 derived; α uniqueness proven."},
+  {n:"68", part:"LXXIII",id:"19658979", cat:"Anomalous moment (g−2)", title:"Cell-Integer Identities & Single-Cell Obstruction to 197/144", sum:"Four Tier-1 theorems: (F−1)(F−14)=0; trace identities tr(L₁²)=288, tr(A³)=144; Q(√17) rational/transcendental split; single-cell obstruction min L¹ = 1/144."},
+
+  // Electroweak
+  {n:"11", part:"",      id:"19063822", cat:"Electroweak", title:"Weinberg Angle v1 (GUT)", sum:"sin²θ_W = 3/8 at the GUT scale."},
+  {n:"41", part:"LII",   id:"19306610", cat:"Electroweak", title:"Weinberg Angle v2", sum:"sin²θ_W = (17−3√17)/20 = 0.23153."},
+  {n:"13", part:"",      id:"19064036", cat:"Electroweak", title:"Higgs / Z Mass Ratio", sum:"m_H/M_Z = 18/(9+√17), 0.14%."},
+  {n:"19", part:"",      id:"19064635", cat:"Electroweak", title:"Electroweak Predictions", sum:"M_W/M_Z, N_ν = 3, d = 3+1, ρ = 1."},
+  {n:"57", part:"",      id:"19484509", cat:"Electroweak", title:"Necessity of the Standard Model", sum:"Higgs = A₂u; fermion chirality forced."},
+  {n:"58", part:"",      id:"19484967", cat:"Electroweak", title:"Gauge-Sector Placement", sum:"SU(3)×SU(2)×U(1) forced by exhaustion."},
+
+  // Strong force
+  {n:"18", part:"",      id:"19064581", cat:"Strong force & QCD", title:"Asymptotic Freedom & Confinement", sum:"b₀ = 7 = λ(T₂g); confinement from π₁ = ℤ."},
+  {n:"17", part:"",      id:"19064416", cat:"Strong force & QCD", title:"GUT-Scale Beta Functions", sum:"M_GUT = 1.50×10¹⁶ GeV, α_s = 0.1179."},
+
+  // Mixing & CP
+  {n:"34", part:"",      id:"19198360", cat:"Mixing & CP", title:"CKM Matrix", sum:"λ = sin(π/14), A = r₁/C_A."},
+  {n:"35", part:"",      id:"19198422", cat:"Mixing & CP", title:"PMNS Matrix", sum:"tan²θ₁₂ = √17/9, sin²θ₁₃ = (√17/27)²."},
+  {n:"36", part:"",      id:"19198775", cat:"Mixing & CP", title:"CP Phases", sum:"δ_PMNS / δ_CKM = 3 exactly — the DUNE test."},
+  {n:"51", part:"",      id:"19477100", cat:"Mixing & CP", title:"NLO Mixing Correction", sum:"ε = √17/81; Cabibbo angle 3.7σ → 0.07σ."},
+  {n:"64", part:"LXIV",  id:"19624977", cat:"Mixing & CP", title:"Wolfenstein ρ̄ (NLO)", sum:"ρ̄ = 0.159 (0.002σ); tr(H) = 1/3, det(H) = −8."},
+  {n:"66", part:"LXVI",  id:"19625071", cat:"Mixing & CP", title:"Wolfenstein A (NLO)", sum:"A = (19+√17)/28 = 0.826 (0.015σ)."},
+  {n:"67", part:"LXVII", id:"19625122", cat:"Mixing & CP", title:"NLO δ_CKM / η̄ Closure", sum:"δ_NLO = δ_LO × 71/72 = 65.438° (±0.002° vs PDG); R_b = 13/34."},
+  {n:"69", part:"LXIX",  id:"19626475", cat:"Mixing & CP", title:"R_b NLO Denominator (Fermion-Walk Operator PT)", sum:"2V−F = dim(H_fermion^eff); joint (ρ̄, η̄) at 0.02σ vs PDG."},
+  {n:"71", part:"LXXI",  id:"19626978", cat:"Mixing & CP", title:"PMNS Solar Angle (NLO)", sum:"tan²θ₁₂ = (√17/9)(1−√17/144) = 0.44501 (0.074σ); closes the last >0.3σ PMNS residual."},
+
+  // Mass spectrum
+  {n:"10", part:"XXIV",  id:"19063774", cat:"Mass spectrum", title:"Lepton Mass Ratios v1", sum:"Koide Q = 2/3 as a theorem."},
+  {n:"31", part:"XXIV",  id:"19185685", cat:"Mass spectrum", title:"Lepton Mass Ratios v2", sum:"Koide θ = 2/9, 10–70 ppm."},
+  {n:"44", part:"LV",    id:"19307003", cat:"Mass spectrum", title:"Complete Particle Masses", sum:"All 13 masses, zero free parameters."},
+  {n:"47", part:"",      id:"19448066", cat:"Mass spectrum", title:"NLO Neutrinos, α_s, M_W", sum:"m₁ = 0, m₃ = 49.5 meV, α_s = 0.11799."},
+  {n:"52", part:"",      id:"19477132", cat:"Mass spectrum", title:"n–p Mass Difference (NLO)", sum:"Δm = 1.2933 MeV (0.34σ)."},
+  {n:"54", part:"",      id:"19484047", cat:"Mass spectrum", title:"Neutrino Mass Ratio", sum:"Δm²₃₁/Δm²₂₁ = 33 exactly."},
+  {n:"65", part:"LXV",   id:"19625005", cat:"Mass spectrum", title:"Neutrino Mass Ratio — Eisenstein Norm", sum:"33 = N(r₁+r₂ω) = S² − C_A·P."},
+  {n:"72", part:"LXXII", id:"19658759", cat:"Mass spectrum", title:"Dirac Operator, Generation Count, Chirality, m₃", sum:"D_F² = L_T; N_gen = mult(T₁u) = 3; hex ↔ left, square ↔ right; m₃ integer exponent (11,13,4)."},
+
+  // Gravity
+  {n:"7",  part:"",      id:"19063610", cat:"Gravity & relativity", title:"Vacuum Metric", sum:"Schwarzschild + Kerr from the foam."},
+  {n:"9",  part:"",      id:"19063718", cat:"Gravity & relativity", title:"Friedmann & Einstein–Hilbert", sum:"Both Friedmann equations from the foam."},
+  {n:"28", part:"",      id:"19184702", cat:"Gravity & relativity", title:"Schwarzschild Complete", sum:"g_rr from incompressibility ν = 1/2."},
+  {n:"46", part:"LVII",  id:"19307177", cat:"Gravity & relativity", title:"Kerr Metric", sum:"All five components; spin-½ from a Wilson loop."},
+
+  // Electromagnetism
+  {n:"8",  part:"",      id:"19063671", cat:"Electromagnetism", title:"Maxwell Equations v1", sum:"All four Maxwell equations from □D = 0."},
+  {n:"29", part:"",      id:"19185556", cat:"Electromagnetism", title:"Maxwell Equations (Full)", sum:"Charge quantisation from O_h."},
+
+  // Quantum foundations
+  {n:"1",  part:"VII",   id:"18706756", cat:"Quantum foundations", title:"Decoherence Suppression", sum:"ΔΓ/Γ = 8.22×10⁻¹¹ — the altitude test."},
+  {n:"2",  part:"VIII",  id:"18706806", cat:"Quantum foundations", title:"Bell Correlations", sum:"Void-network speed c√(3/2)."},
+  {n:"25", part:"",      id:"19085007", cat:"Quantum foundations", title:"S-Matrix & LSZ", sum:"LSZ from the foam; Compton to 0.002%."},
+
+  // Topology & torsion
+  {n:"14", part:"",      id:"19064093", cat:"Topology & torsion", title:"Baryon / Lepton Conservation", sum:"π₁(T₂g) = ℤ; the proton is stable."},
+  {n:"39", part:"L",     id:"19306447", cat:"Topology & torsion", title:"Inter-Type Torsion Operator", sum:"δ_CKM = 66.36°, sin²θ_W = 0.2315."},
+  {n:"40", part:"LI",    id:"19306543", cat:"Topology & torsion", title:"Total Torsion Identity", sum:"2θ_sh + θ_hh = π; spin-½."},
+  {n:"56", part:"",      id:"19484354", cat:"Topology & torsion", title:"Torsion T₁u Theorems", sum:"T² = −4I; maximal generation symmetry."},
+
+  // Dissolved problems
+  {n:"32", part:"",      id:"19196872", cat:"Dissolved problems", title:"Strong CP Dissolved", sum:"θ = 0 from torsion; d_n = 0; no axion."},
+  {n:"33", part:"",      id:"19196942", cat:"Dissolved problems", title:"Hierarchy Problem Dissolved", sum:"No quadratic divergence on the lattice."},
+  {n:"15", part:"",      id:"19064126", cat:"Dissolved problems", title:"No Supersymmetry", sum:"14 faces = the Standard Model; no room for superpartners."},
+
+  // Cosmology
+  {n:"49", part:"",      id:"19448089", cat:"Cosmology", title:"Baryon, Bekenstein, Cosmology", sum:"η_B; Bekenstein quantum k = C_A = 3; n–p mass difference."},
+  {n:"53", part:"",      id:"19483955", cat:"Cosmology", title:"Dark Energy: the 6/7 Factor", sum:"ρ_Λ from (F−χ)/F = 6/7, 0.47%."},
+  {n:"55", part:"",      id:"19484103", cat:"Cosmology", title:"Tensor-to-Scalar Ratio", sum:"r = 0.0225 — testable by LiteBIRD."},
+  {n:"61", part:"",      id:"19491332", cat:"Cosmology", title:"Baryon Asymmetry (NLO)", sum:"η = 6.109×10⁻¹⁰, 0.09σ."},
+  {n:"62", part:"LXII",  id:"19624911", cat:"Cosmology", title:"Independent Convergence: Proton Radius & Vacuum Energy", sum:"r_p = 4ℓ_P(m_P/m_p) = 0.8413 fm."},
+  {n:"70", part:"LXX",   id:"19626516", cat:"Cosmology", title:"Graph-Fourier Companion to the 6/7 Factor", sum:"tr(P_int)/F = 6/7 as the propagating-mode fraction — Tier 1 identity."},
+
+  // Other
+  {n:"6",  part:"",      id:"19063473", cat:"Other results", title:"Running Coupling Constants", sum:"b₀^EM = 4/3; α(M_Z) = 1/128.95."},
+  {n:"30", part:"",      id:"19185628", cat:"Other results", title:"Periodic Table (Aufbau)", sum:"s, p, d, f from the O_h crystal field."},
+  {n:"37", part:"XLVIII",id:"19306316", cat:"Other results", title:"Visible Spectrum", sum:"7 irreps → 7 spectral bands."},
+  {n:"38", part:"XLIX",  id:"19306393", cat:"Other results", title:"Three Generations", sum:"N_gen = F_sq/2 = 3."},
+  {n:"42", part:"LIII",  id:"19306828", cat:"Other results", title:"Path Integral From Foam", sum:"Five Feynman rules from torsion walks."},
+  {n:"43", part:"LIV",   id:"19306918", cat:"Other results", title:"Information Capacity", sum:"Bandwidth; Bekenstein S ≈ F = 14."},
+  {n:"45", part:"LVI",   id:"19307111", cat:"Other results", title:"Void Channel", sum:"H = L + ηV; boson–fermion parity."},
+
+  // Verification
+  {n:"20", part:"",      id:"19079730", cat:"Verification", title:"Spectral Verification", sum:"The numerical verification of the full eigenvalue spectrum."},
+
+  // Standalone
+  {n:"—",  part:"",      id:"19625142", cat:"Standalone preprint", title:"Spectral Uniqueness of the Truncated Octahedron Among Fedorov Parallelohedra", sum:"Standalone pure mathematics (MSC 05C50, 52B10, 52C22) — readable without UFFT context, every claim script-verified."}
+];
+
+var CAT_ORDER = ["Foundations & axiom","Fine-structure constant","Anomalous moment (g−2)","Electroweak",
+  "Strong force & QCD","Mixing & CP","Mass spectrum","Gravity & relativity","Electromagnetism",
+  "Quantum foundations","Topology & torsion","Dissolved problems","Cosmology","Other results",
+  "Verification","Standalone preprint"];
+
+var root = document.getElementById("papers-root");
+var countEl = document.getElementById("paper-count");
+var searchEl = document.getElementById("paper-search");
+
+function render(filter) {
+  root.innerHTML = "";
+  var q = (filter || "").trim().toLowerCase(), shown = 0;
+  CAT_ORDER.forEach(function (cat) {
+    var rows = PAPERS.filter(function (p) {
+      if (p.cat !== cat) return false;
+      if (!q) return true;
+      return (p.title + " " + p.sum + " " + p.cat + " #" + p.n + " " + p.part).toLowerCase().indexOf(q) !== -1;
+    });
+    if (!rows.length) return;
+    shown += rows.length;
+    var sec = document.createElement("section");
+    sec.className = "paper-cat";
+    var h = document.createElement("h3"); h.className = "paper-cat-h"; h.textContent = cat + " (" + rows.length + ")";
+    sec.appendChild(h);
+    var grid = document.createElement("div"); grid.className = "paper-grid";
+    rows.forEach(function (p) {
+      var a = document.createElement("a");
+      a.className = "paper-card";
+      a.href = "https://zenodo.org/records/" + p.id;
+      a.rel = "noopener"; a.target = "_blank";
+      var tag = p.n !== "—" ? ("Paper #" + p.n + (p.part ? " · Part " + p.part : "")) : (p.part ? "Part " + p.part : "Standalone");
+      a.innerHTML =
+        "<div class='pc-tag'>" + tag + "</div>" +
+        "<div class='pc-title'>" + p.title + "</div>" +
+        "<div class='pc-sum'>" + p.sum + "</div>" +
+        "<div class='pc-doi'>10.5281/zenodo." + p.id + " <span class='pc-arrow'>View on Zenodo →</span></div>";
+      grid.appendChild(a);
+    });
+    sec.appendChild(grid);
+    root.appendChild(sec);
+  });
+  if (!shown) root.innerHTML = "<section class='paper-cat'><p class='faint'>No papers match “" + (filter || "") + "”.</p></section>";
+  countEl.textContent = q ? (shown + " of " + PAPERS.length + " papers") : (PAPERS.length + " papers on Zenodo");
+}
+
+searchEl.addEventListener("input", function () { render(searchEl.value); });
+render("");
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Netlify config for the UFFT site.
+# Deploy: drag this `website/` folder onto app.netlify.com/drop,
+# or `netlify deploy --dir=. --prod` from inside it. No build step.
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
