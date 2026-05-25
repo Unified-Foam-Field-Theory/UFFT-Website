@@ -19,7 +19,7 @@ body.book {
   max-width: clamp(20rem, 92vw, 48rem); margin: 0 auto; padding: 12px 24px;
   display: flex; align-items: center; gap: 18px;
 }
-.book-bar .home { margin-right: auto; display: flex; align-items: baseline; gap: 11px; }
+.book-bar .home { margin-right: auto; display: flex; align-items: center; gap: 11px; }
 .book-bar .home .logo {
   font-family: var(--mono); font-weight: 700; color: var(--accent);
   border: 1px solid var(--accent-dim); padding: 3px 8px; border-radius: 7px; font-size: 0.9375rem;
@@ -141,4 +141,5 @@ body.book {
   .cover h1 { font-size: 2.2rem; }
   .chap-title { font-size: 1.85rem; }
   .toc-item .til { display: none; }
+  .book-bar .home .bk { display: none; }   /* keep the bar a clean single row on phones */
 }
