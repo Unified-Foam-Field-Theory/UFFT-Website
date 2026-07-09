@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RM0KGH86BC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RM0KGH86BC');
+</script>
+<meta name="description" content="A sonification of the truncated octahedron's Laplacian spectrum — the six UFFT eigenvalues {0, 2.438, 4, 6.562, 7, 9} mapped to pitch by frequency proportional to the square root of the eigenvalue." />
+<link rel="canonical" href="https://ufft.info/sound.html" />
+<meta name="author" content="Luke Martin" />
+<meta name="theme-color" content="#05050a" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Unified Foam Field Theory" />
+<meta property="og:title" content="The Sound of the Foam — UFFT" />
+<meta property="og:description" content="The Kelvin cell's real eigenvalue spectrum, sonified. A sonification, not a physical claim." />
+<meta property="og:url" content="https://ufft.info/sound.html" />
+<meta property="og:image" content="https://ufft.info/assets/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<title>UFFT, The Sound of the Foam</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #05050a;
+    --surface: #0d0d18;
+    --border: #1e1e35;
+    --accent: #7b5ea7;
+    --accent2: #4fc3f7;
+    --accent3: #e040fb;
+    --text: #c8c8e0;
+    --muted: #55556a;
+    --white: #eeeef8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 60px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+    max-width: 600px;
+  }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 6vw, 48px);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+
+  h1 span {
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  /* Canvas */
+  #waveCanvas {
+    width: 100%;
+    max-width: 700px;
+    height: 130px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface);
+    margin-bottom: 32px;
+    display: block;
+  }
+
+  /* Mode grid */
+  .modes-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .modes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 32px;
+  }
+
+  .mode-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mode-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--mode-color, var(--accent));
+    opacity: 0.5;
+    transition: opacity 0.15s;
+  }
+
+  .mode-card.active {
+    border-color: var(--mode-color, var(--accent));
+    background: #12121f;
+  }
+
+  .mode-card.active::before { opacity: 1; }
+
+  .mode-irrep {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .mode-freq {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+
+  .mode-desc {
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.4;
+    margin-top: 6px;
+  }
+
+  .mode-hz {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--mode-color, var(--accent));
+    margin-top: 4px;
+  }
+
+  /* Controls */
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 28px;
+  }
+
+  .btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    padding: 12px 24px;
+    border-radius: 3px;
+    border: 1px solid;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: transparent;
+  }
+
+  .btn-primary {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .btn-primary:hover, .btn-primary.playing {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .btn-all {
+    border-color: var(--accent3);
+    color: var(--accent3);
+  }
+  .btn-all:hover, .btn-all.playing {
+    background: var(--accent3);
+    color: var(--bg);
+  }
+
+  .btn-beat {
+    border-color: var(--accent2);
+    color: var(--accent2);
+  }
+  .btn-beat:hover, .btn-beat.playing {
+    background: var(--accent2);
+    color: var(--bg);
+  }
+
+  /* Sliders */
+  .sliders {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 32px;
+  }
+
+  .slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    min-width: 140px;
+  }
+
+  .slider-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  input[type=range] {
+    width: 140px;
+    accent-color: var(--accent);
+  }
+
+  .slider-val {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+  }
+
+  /* Beat info */
+  .beat-info {
+    width: 100%;
+    max-width: 700px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent2);
+    border-radius: 4px;
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .beat-info strong { color: var(--white); font-weight: 600; }
+  .beat-info code {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent2);
+  }
+</style>
+</head>
+<body>
+
+<header style="width:100%;max-width:700px;display:flex;justify-content:space-between;align-items:center;margin-bottom:36px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.03em">
+  <a href="index.html" style="color:var(--accent);text-decoration:none;font-weight:700">B + V = D</a>
+  <nav style="display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end">
+    <a href="index.html" style="color:var(--muted);text-decoration:none">Home</a>
+    <a href="theory.html" style="color:var(--muted);text-decoration:none">Theory</a>
+    <a href="predictions.html" style="color:var(--muted);text-decoration:none">Predictions</a>
+    <a href="verify.html" style="color:var(--muted);text-decoration:none">Verify</a>
+    <span style="color:var(--accent3)">Sound</span>
+  </nav>
+</header>
+
+<header>
+  <div class="eyebrow">Unified Foam Field Theory</div>
+  <h1>The <span>Sound</span> of the Foam</h1>
+  <p class="subtitle">The truncated octahedron Kelvin cell has a discrete Laplacian spectrum: six eigenvalues {0, 2.438, 4, 6.562, 7, 9}. Each is mapped to pitch with frequency proportional to √λ. A sonification of the real spectrum, not a claim that sound makes physics.</p>
+</header>
+
+<canvas id="waveCanvas"></canvas>
+
+<div class="modes-label">Symmetry irreps · O_h point group</div>
+<div class="modes" id="modeGrid"></div>
+
+<div class="controls">
+  <button class="btn btn-primary" id="btnPlay" onclick="toggleSelected()">▶ Play Selected</button>
+  <button class="btn btn-all" id="btnAll" onclick="toggleAll()">◈ Sound the Foam</button>
+  <button class="btn btn-beat" id="btnBeat" onclick="toggleBeat()">~ Beat Frequencies</button>
+  <button class="btn" style="border-color:var(--muted);color:var(--muted)" onclick="stopAll()">■ Stop</button>
+</div>
+
+<div class="sliders">
+  <div class="slider-group">
+    <span class="slider-label">VOLUME</span>
+    <input type="range" min="0" max="100" value="60" oninput="setVolume(this.value)">
+    <span class="slider-val" id="volVal">60%</span>
+  </div>
+  <div class="slider-group">
+    <span class="slider-label">OCTAVE SHIFT</span>
+    <input type="range" min="-2" max="2" value="0" step="1" oninput="setOctave(this.value)">
+    <span class="slider-val" id="octVal">0</span>
+  </div>
+  <div class="slider-group">
+    <span class="slider-label">REVERB</span>
+    <input type="range" min="0" max="100" value="40" oninput="setReverb(this.value)">
+    <span class="slider-val" id="revVal">40%</span>
+  </div>
+</div>
+
+<div class="beat-info">
+  <strong>Why beats?</strong> The spectrum has one close pair: the heavier fermion band at <code>λ = 6.562</code> and the gluon mode at <code>λ = 7</code>. Sounded together they beat at their difference, a slow throb of a few Hz. The gaps and ratios between the six modes (the √17 in the fermion split, the sums 9 and 16 in the master equation) are where UFFT’s derived numbers come from. This is a sonification of the real eigenvalues, not a claim that the beating itself generates mass.
+</div>
+
+<script>
+// UFFT eigenvalue modes, Oh point group of truncated octahedron
+// Eigenvalues from the Kelvin cell vibrational spectrum, normalised
+// Base frequencies chosen to span audible range with meaningful ratios
+const MODES = [
+  {
+    irrep: 'A₁g',
+    eigenval: 0.0,
+    baseFreq: 55,
+    color: '#7b5ea7',
+    desc: 'Zero mode. True frequency is zero (the vacuum is silent); shown as a low 55 Hz reference.',
+    physics: 'Photon / vacuum'
+  },
+  {
+    irrep: 'T₁u',
+    eigenval: 2.438,
+    baseFreq: 171.8,
+    color: '#e040fb',
+    desc: 'Lighter triply-degenerate band. Root (9−√17)/2.',
+    physics: 'Fermions, three generations'
+  },
+  {
+    irrep: 'Eg',
+    eigenval: 4.0,
+    baseFreq: 220.0,
+    color: '#4fc3f7',
+    desc: 'Doubly degenerate. The electroweak mode.',
+    physics: 'W and Z bosons'
+  },
+  {
+    irrep: 'T₁u',
+    eigenval: 6.562,
+    baseFreq: 281.8,
+    color: '#ce93d8',
+    desc: 'Heavier triply-degenerate band. Root (9+√17)/2.',
+    physics: 'Fermions, heavier band'
+  },
+  {
+    irrep: 'T₂g',
+    eigenval: 7.0,
+    baseFreq: 291.0,
+    color: '#f48fb1',
+    desc: 'Quadruply degenerate hexagonal mode.',
+    physics: 'Gluons, strong force'
+  },
+  {
+    irrep: 'A₂u',
+    eigenval: 9.0,
+    baseFreq: 330.0,
+    color: '#81c784',
+    desc: 'Top mode. Antisymmetric, parity-odd.',
+    physics: 'The Higgs'
+  },
+];
+
+// Audio context
+let ctx = null;
+let masterGain = null;
+let reverbNode = null;
+let reverbGain = null;
+let dryGain = null;
+let activeNodes = {};
+let octaveShift = 0;
+let volumeLevel = 0.6;
+let reverbLevel = 0.4;
+let animFrame = null;
+
+function initAudio() {
+  if (ctx) return;
+  ctx = new (window.AudioContext || window.webkitAudioContext)();
+  masterGain = ctx.createGain();
+  masterGain.gain.value = volumeLevel;
+
+  // Simple reverb via convolver
+  reverbNode = ctx.createConvolver();
+  const reverbBuf = createReverbBuffer(ctx, 2.5, false);
+  reverbNode.buffer = reverbBuf;
+
+  dryGain = ctx.createGain();
+  dryGain.gain.value = 1 - reverbLevel;
+
+  reverbGain = ctx.createGain();
+  reverbGain.gain.value = reverbLevel;
+
+  masterGain.connect(dryGain);
+  masterGain.connect(reverbNode);
+  reverbNode.connect(reverbGain);
+  dryGain.connect(ctx.destination);
+  reverbGain.connect(ctx.destination);
+}
+
+function createReverbBuffer(audioCtx, duration, reverse) {
+  const rate = audioCtx.sampleRate;
+  const length = rate * duration;
+  const impulse = audioCtx.createBuffer(2, length, rate);
+  for (let c = 0; c < 2; c++) {
+    const channel = impulse.getChannelData(c);
+    for (let i = 0; i < length; i++) {
+      channel[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 3);
+    }
+  }
+  return impulse;
+}
+
+function getFreq(mode) {
+  return mode.baseFreq * Math.pow(2, octaveShift);
+}
+
+function playMode(index, duration) {
+  initAudio();
+  const mode = MODES[index];
+  const freq = getFreq(mode);
+
+  // Layered synthesis: sine + slight detune for richness
+  const osc1 = ctx.createOscillator();
+  const osc2 = ctx.createOscillator();
+  const osc3 = ctx.createOscillator();
+  const gainNode = ctx.createGain();
+
+  osc1.type = 'sine';
+  osc2.type = 'sine';
+  osc3.type = 'triangle';
+
+  osc1.frequency.value = freq;
+  osc2.frequency.value = freq * 1.0007; // micro-detune = shimmer
+  osc3.frequency.value = freq * 2.001;  // subtle overtone
+
+  const g1 = ctx.createGain(); g1.gain.value = 0.6;
+  const g2 = ctx.createGain(); g2.gain.value = 0.3;
+  const g3 = ctx.createGain(); g3.gain.value = 0.1;
+
+  osc1.connect(g1); g1.connect(gainNode);
+  osc2.connect(g2); g2.connect(gainNode);
+  osc3.connect(g3); g3.connect(gainNode);
+  gainNode.connect(masterGain);
+
+  const now = ctx.currentTime;
+  gainNode.gain.setValueAtTime(0, now);
+  gainNode.gain.linearRampToValueAtTime(0.25, now + 0.05);
+  if (duration) {
+    gainNode.gain.setValueAtTime(0.25, now + duration - 0.3);
+    gainNode.gain.linearRampToValueAtTime(0, now + duration);
+  }
+
+  osc1.start(now); osc2.start(now); osc3.start(now);
+  if (duration) {
+    osc1.stop(now + duration);
+    osc2.stop(now + duration);
+    osc3.stop(now + duration);
+  }
+
+  return { osc1, osc2, osc3, gainNode };
+}
+
+function stopMode(index) {
+  if (activeNodes[index]) {
+    const nodes = activeNodes[index];
+    const now = ctx ? ctx.currentTime : 0;
+    try {
+      nodes.gainNode.gain.linearRampToValueAtTime(0, now + 0.2);
+      nodes.osc1.stop(now + 0.2);
+      nodes.osc2.stop(now + 0.2);
+      nodes.osc3.stop(now + 0.2);
+    } catch(e) {}
+    delete activeNodes[index];
+  }
+}
+
+// Selection state
+let selected = new Set([0]);
+
+function toggleModeSelect(index) {
+  if (selected.has(index)) {
+    selected.delete(index);
+    // If playing selected mode, fade it out live
+    if (playingSelected && activeNodes[index]) {
+      stopMode(index);
+    }
+  } else {
+    selected.add(index);
+    // If playing in selected mode, start this tone live
+    if (playingSelected) {
+      initAudio();
+      activeNodes[index] = playMode(index);
+    }
+  }
+  renderModes();
+}
+
+let playingSelected = false;
+let playingAll = false;
+let playingBeat = false;
+
+function stopAll() {
+  for (let k in activeNodes) stopMode(parseInt(k));
+  activeNodes = {};
+  playingSelected = false;
+  playingAll = false;
+  playingBeat = false;
+  updateBtns();
+  if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
+}
+
+function toggleSelected() {
+  if (playingSelected) { stopAll(); return; }
+  stopAll();
+  initAudio();
+  playingSelected = true;
+  selected.forEach(i => { activeNodes[i] = playMode(i); });
+  updateBtns();
+  drawWave();
+}
+
+function toggleAll() {
+  if (playingAll) { stopAll(); return; }
+  stopAll();
+  initAudio();
+  playingAll = true;
+  MODES.forEach((_, i) => { activeNodes[i] = playMode(i); });
+  updateBtns();
+  drawWave();
+}
+
+function toggleBeat() {
+  if (playingBeat) { stopAll(); return; }
+  stopAll();
+  initAudio();
+  playingBeat = true;
+  // Play the near-degenerate pairs: Eg/Eg', T1u/T1u'
+  [3, 4].forEach(i => { activeNodes[i] = playMode(i); });
+  updateBtns();
+  drawWave();
+}
+
+function updateBtns() {
+  document.getElementById('btnPlay').classList.toggle('playing', playingSelected);
+  document.getElementById('btnAll').classList.toggle('playing', playingAll);
+  document.getElementById('btnBeat').classList.toggle('playing', playingBeat);
+  document.getElementById('btnPlay').textContent = playingSelected ? '■ Stop Selected' : '▶ Play Selected';
+  document.getElementById('btnAll').textContent = playingAll ? '■ Stop' : '◈ Sound the Foam';
+  document.getElementById('btnBeat').textContent = playingBeat ? '■ Stop Beats' : '~ Beat Frequencies';
+}
+
+function setVolume(v) {
+  volumeLevel = v / 100;
+  document.getElementById('volVal').textContent = v + '%';
+  if (masterGain) masterGain.gain.value = volumeLevel;
+}
+
+function setOctave(v) {
+  octaveShift = parseInt(v);
+  document.getElementById('octVal').textContent = (v > 0 ? '+' : '') + v;
+  // Retune live oscillators
+  Object.entries(activeNodes).forEach(([i, nodes]) => {
+    const freq = getFreq(MODES[parseInt(i)]);
+    try {
+      nodes.osc1.frequency.value = freq;
+      nodes.osc2.frequency.value = freq * 1.0007;
+      nodes.osc3.frequency.value = freq * 2.001;
+    } catch(e) {}
+  });
+}
+
+function setReverb(v) {
+  reverbLevel = v / 100;
+  document.getElementById('revVal').textContent = v + '%';
+  if (dryGain) dryGain.gain.value = 1 - reverbLevel;
+  if (reverbGain) reverbGain.gain.value = reverbLevel;
+}
+
+// Canvas waveform
+const canvas = document.getElementById('waveCanvas');
+const canvasCtx = canvas.getContext('2d');
+
+function drawWave() {
+  canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+  canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+  canvasCtx.scale(window.devicePixelRatio, window.devicePixelRatio);
+  const W = canvas.offsetWidth, H = canvas.offsetHeight;
+  let t = 0;
+
+  function frame() {
+    canvasCtx.fillStyle = '#0d0d18';
+    canvasCtx.fillRect(0, 0, W, H);
+
+    const activeIndices = Object.keys(activeNodes).map(Number);
+    if (activeIndices.length === 0) {
+      animFrame = requestAnimationFrame(frame);
+      t += 0.03;
+      return;
+    }
+
+    // Draw each active mode's wave
+    activeIndices.forEach(i => {
+      const mode = MODES[i];
+      const freq = getFreq(mode);
+      canvasCtx.beginPath();
+      canvasCtx.strokeStyle = mode.color + '88';
+      canvasCtx.lineWidth = 1;
+      for (let x = 0; x < W; x++) {
+        const phase = (x / W) * Math.PI * 2 * (freq / 55) + t * freq * 0.005;
+        const y = H / 2 + Math.sin(phase) * (H * 0.35);
+        x === 0 ? canvasCtx.moveTo(x, y) : canvasCtx.lineTo(x, y);
+      }
+      canvasCtx.stroke();
+    });
+
+    // Draw composite sum
+    canvasCtx.beginPath();
+    canvasCtx.strokeStyle = '#ffffff55';
+    canvasCtx.lineWidth = 1.5;
+    for (let x = 0; x < W; x++) {
+      let sum = 0;
+      activeIndices.forEach(i => {
+        const freq = getFreq(MODES[i]);
+        const phase = (x / W) * Math.PI * 2 * (freq / 55) + t * freq * 0.005;
+        sum += Math.sin(phase);
+      });
+      const y = H / 2 + (sum / Math.max(activeIndices.length, 1)) * H * 0.38;
+      x === 0 ? canvasCtx.moveTo(x, y) : canvasCtx.lineTo(x, y);
+    }
+    canvasCtx.stroke();
+
+    t += 0.03;
+    animFrame = requestAnimationFrame(frame);
+  }
+
+  if (animFrame) cancelAnimationFrame(animFrame);
+  frame();
+}
+
+// Render mode cards
+function renderModes() {
+  const grid = document.getElementById('modeGrid');
+  grid.innerHTML = '';
+  MODES.forEach((mode, i) => {
+    const card = document.createElement('div');
+    card.className = 'mode-card' + (selected.has(i) ? ' active' : '');
+    card.style.setProperty('--mode-color', mode.color);
+    card.innerHTML = `
+      <div class="mode-irrep">${mode.irrep}</div>
+      <div class="mode-freq">λ = ${mode.eigenval.toFixed(3)}</div>
+      <div class="mode-hz">${Math.round(getFreq(mode))} Hz</div>
+      <div class="mode-desc">${mode.desc}</div>
+      <div class="mode-desc" style="color:${mode.color}88;margin-top:4px">${mode.physics}</div>
+    `;
+    card.onclick = () => toggleModeSelect(i);
+    grid.appendChild(card);
+  });
+}
+
+// Init
+renderModes();
+drawWave();
+</script>
+<footer style="width:100%;max-width:700px;margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);text-align:center;line-height:1.9">
+  A sonification of the real Laplacian spectrum of the Kelvin cell, mapped to pitch by frequency &#8733; &#8730;&#955;. It is a way to hear the structure, not a physical claim; the physics lives in the <a href="theory.html" style="color:var(--accent2);text-decoration:none">theory</a> and the <a href="verify.html" style="color:var(--accent2);text-decoration:none">runnable code</a>.<br>
+  Unified Foam Field Theory &nbsp;·&nbsp; <a href="index.html" style="color:var(--accent2);text-decoration:none">ufft.info</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/ufft.info/" rel="noopener" style="color:var(--accent2);text-decoration:none">@ufft.info</a>
+</footer>
+
+</body>
+</html>
