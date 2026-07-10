@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RM0KGH86BC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RM0KGH86BC');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ask UFFT — questions and honest answers</title>
+<meta name="description" content="Ask a question about Unified Foam Field Theory. Honest, tier-labelled answers to the common questions, and a form to submit your own — answered by Luke Martin, not a bot." />
+<link rel="canonical" href="https://ufft.info/ask.html" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="Luke Martin" />
+<meta name="theme-color" content="#0a0d12" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Unified Foam Field Theory" />
+<meta property="og:title" content="Ask UFFT — questions and honest answers" />
+<meta property="og:description" content="Honest, tier-labelled answers to the common questions about UFFT, plus a form to ask your own." />
+<meta property="og:url" content="https://ufft.info/ask.html" />
+<meta property="og:image" content="https://ufft.info/assets/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="assets/styles.css" />
+<style>
+  .ask-wrap { max-width: 820px; margin: 0 auto; padding: 0 20px; }
+  .ask-lead { color: var(--muted, #8a93a6); font-size: 1.05rem; line-height: 1.6; margin: 8px 0 28px; }
+  .faq details {
+    border: 1px solid #1e2734; border-radius: 8px; background: #0e1219;
+    margin-bottom: 10px; overflow: hidden;
+  }
+  .faq summary {
+    cursor: pointer; padding: 16px 20px; font-weight: 600; color: #ECEAE3;
+    list-style: none; font-size: 1.02rem;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::before { content: "+ "; color: #2FD4B0; font-weight: 700; }
+  .faq details[open] summary::before { content: "– "; }
+  .faq .a { padding: 0 20px 18px; color: #a9b2c3; line-height: 1.65; }
+  .faq .a code { color: #2FD4B0; font-family: ui-monospace, monospace; }
+  .tier { display:inline-block; font-family: ui-monospace, monospace; font-size: 0.72rem;
+    letter-spacing: 0.04em; padding: 2px 8px; border-radius: 20px; margin-left: 6px; vertical-align: 2px; }
+  .t1 { background: rgba(47,212,176,0.14); color: #2FD4B0; }
+  .t2 { background: rgba(231,161,59,0.14); color: #E7A13B; }
+  .open { background: rgba(138,147,166,0.16); color: #b7bfce; }
+  .askform { margin-top: 40px; border-top: 1px solid #1e2734; padding-top: 28px; }
+  .askform label { display:block; color:#8a93a6; font-size:0.85rem; margin:14px 0 6px; letter-spacing:0.02em; }
+  .askform input, .askform textarea {
+    width:100%; background:#0e1219; border:1px solid #243040; border-radius:6px;
+    color:#ECEAE3; padding:12px 14px; font-size:1rem; font-family:inherit;
+  }
+  .askform textarea { min-height:130px; resize:vertical; }
+  .askform button {
+    margin-top:18px; background:#2FD4B0; color:#0A0D12; border:0; border-radius:6px;
+    padding:12px 26px; font-weight:700; font-size:0.95rem; cursor:pointer;
+  }
+  .askform .note { color:#6b7385; font-size:0.82rem; margin-top:14px; line-height:1.5; }
+  .hp { position:absolute; left:-5000px; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="logo">B + V = D</span>
+      <span class="name">Unified Foam Field Theory</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu">Menu</button>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="predictions.html">Predictions</a>
+      <a href="papers.html">Papers</a>
+      <a href="verify.html">Verify</a>
+      <a href="ask.html" class="active">Ask</a>
+      <a href="https://github.com/WebEnvy/UnifiedFoamFieldTheory" class="ext" rel="noopener">Repository</a>
+    </nav>
+  </div>
+</header>
+
+<main class="ask-wrap" id="main-content" style="padding-top:48px; padding-bottom:80px;">
+  <div class="eyebrow" style="color:#2FD4B0; font-family:ui-monospace,monospace; font-size:0.78rem; letter-spacing:0.2em; text-transform:uppercase;">Ask UFFT</div>
+  <h1 style="color:#ECEAE3; font-size:2.2rem; line-height:1.15; margin:10px 0 6px;">Ask a question. Get an honest answer.</h1>
+  <p class="ask-lead">
+    Everything here is an open-access preprint, not peer reviewed, and the maths is meant to be checked, not taken on faith.
+    Below are honest answers to the questions that come up most, each tagged with its claim tier
+    (<span class="tier t1">Tier 1 theorem</span> <span class="tier t2">Tier 2 derived</span> <span class="tier open">open</span>).
+    Got a different one? Send it at the bottom. Answers come from Luke, not a bot.
+  </p>
+
+  <section class="faq">
+
+    <details>
+      <summary>What are a bubble, a void, and a displacement (B + V = D)?</summary>
+      <div class="a">
+        They're the one axiom. A <strong>bubble</strong> (B) is a region of positive curvature, the pre-existing foam.
+        A <strong>void</strong> (V) is a region of negative curvature, the absence created by an event. A
+        <strong>displacement</strong> (D) is the whole event, the net topological change. The relation isn't symmetric:
+        the void acts on the bubble first. That ordering is the single physical input, and it's where parity violation
+        comes from later. Full statement in <em>From Foam to Fermions</em>, Chapter 2.
+      </div>
+    </details>
+
+    <details>
+      <summary>Where does the "master equation" λ² − 9λ + 16 = 0 come from? It looks like it appears from nowhere.</summary>
+      <div class="a">
+        It's computed, not posited. <span class="tier t1">Tier 1</span> Take the truncated octahedron, build the
+        14×14 adjacency matrix of its faces (two faces linked if they share an edge), form the Laplacian
+        <code>L = D − A</code>, and factor its characteristic polynomial by the cell's O<sub>h</sub> symmetry.
+        <code>λ² − 9λ + 16 = 0</code> falls out as the fermion (T₁u) block. It's a fixed integer-matrix
+        calculation anyone can run in about ten lines — <a href="verify.html">ufft.info/verify</a>. If the
+        eigenvalues came out differently, the framework would be wrong from the first step.
+      </div>
+    </details>
+
+    <details>
+      <summary>Is any of this peer reviewed?</summary>
+      <div class="a">
+        No. Every paper is an open-access preprint on Zenodo, clearly labelled "not peer reviewed." The claim isn't
+        authority, it's reproducibility: the numbers recompute from the cell or they don't, independent of who wrote them.
+        Peer review would be welcome; it just hasn't happened yet.
+      </div>
+    </details>
+
+    <details>
+      <summary>Are the papers written with AI? Doesn't that make them "AI slop"?</summary>
+      <div class="a">
+        Yes, they're written with AI assistance, and every paper discloses it. That doesn't decide whether the maths is
+        correct. The spectrum, the mixing angles, Koide's 2/3, all either reproduce from the geometry or they don't, and
+        that's checkable by anyone in a few lines of Python. Author and truth are separate questions.
+      </div>
+    </details>
+
+    <details>
+      <summary>How many free parameters does UFFT have?</summary>
+      <div class="a">
+        Zero fitted constants. Every quantity is built from integers of the cell (its 24 vertices, 36 edges, 14 faces,
+        and the order-48 symmetry group). Honest caveat: "zero parameters" refers to the inputs, not the certainty —
+        results range from <span class="tier t1">Tier 1</span> theorems to <span class="tier t2">Tier 2</span>
+        identifications, and the epistemological status table in the Core Framework labels each one.
+      </div>
+    </details>
+
+    <details>
+      <summary>What do the tiers mean?</summary>
+      <div class="a">
+        Every claim carries a tier so nothing is oversold. <span class="tier t1">Tier 1</span> is a theorem
+        (follows from the geometry alone). <span class="tier t2">Tier 2</span> is derived given a physical
+        identification. Tier 3 is a tension, Tier 4 is suggestive. Not everything here is Tier 1, and the papers say so.
+      </div>
+    </details>
+
+    <details>
+      <summary>Is Koide's Q = 2/3 really derived, or fitted?</summary>
+      <div class="a">
+        Derived. <span class="tier t1">Tier 1</span> The charged leptons sit in the cell's three T₁u modes in Koide
+        form, and the √2 in that form forces <code>Q = 2/3</code> identically, for any angle. The one remaining angle
+        is fixed by two eigenvalues of the same cell: <code>θ = (9 − 7)/9 = 2/9</code>, the gap between the Higgs and
+        gluon eigenvalues over the Higgs eigenvalue. Feeding θ = 2/9 back in reproduces m<sub>μ</sub>/m<sub>e</sub>
+        and m<sub>τ</sub>/m<sub>μ</sub> to about 0.01%.
+      </div>
+    </details>
+
+    <details>
+      <summary>Why the truncated octahedron and not some other shape?</summary>
+      <div class="a">
+        It's forced, not chosen. <span class="tier t1">Tier 1</span> Among the five space-filling
+        (Fedorov) parallelohedra, the truncated octahedron is the only one whose face Laplacian has a prime
+        discriminant (Δ = 17), an integer eigenvalue product (r₁r₂ = 16), and an eigenvalue sum that is a perfect
+        square (r₁ + r₂ = 9 = 3²). Proven by computing all five (Paper #50).
+      </div>
+    </details>
+
+    <details>
+      <summary>The proton radius — is that actually derived?</summary>
+      <div class="a">
+        Honestly, not fully, and the paper was scoped down to say so. <span class="tier open">open</span>
+        The result <code>r_p = 4ℏ/(m_p c)</code> is exactly four times the proton's reduced Compton wavelength.
+        The "Planck-scale evidence" framing overreached — written in Planck units the Planck factors cancel
+        algebraically, so that identity alone isn't evidence of quantum-gravity geometry. Whether the factor of 4
+        follows from the cell's λ = 4 mode, rather than being identified after the fact, is an open question, not a
+        finished derivation.
+      </div>
+    </details>
+
+    <details>
+      <summary>If light is a wave in the foam, isn't the foam just an aether? Wouldn't that break relativity?</summary>
+      <div class="a">
+        That's the right objection, and the answer is why it works. A normal medium's wave speed has a preferred frame
+        (the medium's rest frame), which would show up as a detectable aether. The foam avoids that because its wave
+        equation <code>□φ = 0</code> comes out Lorentz-invariant, so every observer measures the same c even though it's
+        a medium speed. Recovering that invariance from the foam is the real content of the framework's γ derivation,
+        not an assumption.
+      </div>
+    </details>
+
+    <details>
+      <summary>Does UFFT explain the Hubble tension, dark matter, "the crisis in cosmology"?</summary>
+      <div class="a">
+        Partly, and it's honest about where it doesn't. The Friedmann equations and a close dark-energy density are
+        derived, and there's a dark-matter ratio result. But H₀ (the Hubble tension) and the cosmological initial
+        conditions are <span class="tier open">open items</span>, not strengths. A framework doesn't have to explain
+        every headline to be worth taking seriously; it has to make a few things unavoidable.
+      </div>
+    </details>
+
+    <details>
+      <summary>What would prove UFFT wrong?</summary>
+      <div class="a">
+        The sharpest test: the ratio of the two CP-violating phases must be exactly 3,
+        <code>δ_PMNS / δ_CKM = 3</code>, and DUNE will measure it this decade. Anything else and the framework is wrong.
+        Beyond that, the spectrum must reproduce (checkable now), light must not decay over distance (tired-light models
+        are already ruled out), and any lattice anisotropy in light propagation must stay Planck-suppressed
+        (bounded by gamma-ray-burst timing). It's built to be breakable.
+      </div>
+    </details>
+
+  </section>
+
+  <section class="askform">
+    <h2 style="color:#ECEAE3; font-size:1.4rem; margin-bottom:6px;">Ask your own</h2>
+    <p style="color:#8a93a6; line-height:1.6; margin-bottom:6px;">
+      Objection, clarification, or "does the framework say anything about X" — send it. Real questions get real answers,
+      and the good ones get added above.
+    </p>
+    <form name="ufft-question" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/ask.html?sent=1">
+      <input type="hidden" name="form-name" value="ufft-question" />
+      <p class="hp"><label>Don't fill this in: <input name="bot-field" /></label></p>
+      <label for="q">Your question <span style="color:#E7A13B">*</span></label>
+      <textarea id="q" name="question" required placeholder="e.g. Does the framework predict anything about neutrino mass ordering?"></textarea>
+      <label for="name">Name (optional)</label>
+      <input id="name" name="name" type="text" />
+      <label for="email">Email (optional, only if you want a reply)</label>
+      <input id="email" name="email" type="email" />
+      <button type="submit">Send question</button>
+      <p class="note" id="sentmsg" style="display:none; color:#2FD4B0;">Thanks, your question came through. Answered by hand, so give it a little time.</p>
+      <p class="note">Answered by Luke Martin, not an automated system. Nothing is shared or published without permission.</p>
+    </form>
+  </section>
+</main>
+
+<script>
+  if (new URLSearchParams(location.search).get('sent')) {
+    var m = document.getElementById('sentmsg'); if (m) m.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
