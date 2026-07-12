@@ -71,6 +71,11 @@
     <span class="item"><span class="badge t3">Tier 3</span> &gt;1.5σ tension</span>
     <span class="item"><span class="badge t4">Tier 4</span> suggestive / speculative</span>
   </div>
+  <p class="faint">The Paper column links each result to its source paper on
+    <a href="https://github.com/ufft-info/UFFT/tree/main/papers" rel="noopener">GitHub</a> (every paper
+    carries a Zenodo DOI). Rows marked — are derived in the
+    <a href="https://github.com/ufft-info/UFFT/blob/main/UFFT_Core_Framework_v9.md" rel="noopener">Core Framework</a>
+    and do not yet have a standalone paper.</p>
 </section>
 
 <section>
@@ -81,7 +86,8 @@
   <p>This ratio follows from the colour factor \(C_A = 3\) alone. It is exact, parameter-free, and the
     PMNS CP phase is exactly what DUNE is built to measure (around 2035). <strong>If the ratio is
     confirmed ≠ 3 at &gt;3σ, the framework is falsified.</strong> No other approach makes this
-    particular prediction.</p>
+    particular prediction. Full derivation:
+    <a href="https://github.com/ufft-info/UFFT/blob/main/papers/19198775_UFFT_CP_Phases.md" rel="noopener">Paper #36, CP Phases</a>.</p>
 </section>
 
 <section>
@@ -91,13 +97,13 @@
     </div>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>Observable</th><th>Formula (cell integers)</th><th>Status</th><th>Distance from experiment</th></tr></thead>
+      <thead><tr><th>Observable</th><th>Formula (cell integers)</th><th>Status</th><th>Distance from experiment</th><th>Paper</th></tr></thead>
       <tbody>
-        <tr><td>α⁻¹ (fine structure)</td><td class="mono">(4π)³ᐟ²·π·[47/48 + 10/(3·48³) + 22/(3·48⁵)]</td><td><span class="badge t2">Tier 2</span></td><td class="val">137.035999055 · 0.3σ from Cs (2018)</td></tr>
-        <tr><td>sin²θ_W (geometric)</td><td class="mono">(17 − 3√17)/20</td><td><span class="badge t1">Tier 1</span></td><td class="val">0.14%</td></tr>
-        <tr><td>α_s(M_Z)</td><td class="mono">C_A² − C_A·ln(C_A)/(2π)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.01σ</td></tr>
-        <tr><td>m_H / M_Z</td><td class="mono">18/(9+√17)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.14%</td></tr>
-        <tr><td>α_GUT⁻¹</td><td class="mono">25</td><td><span class="badge t2">Tier 2</span></td><td class="val">novel — not directly measurable</td></tr>
+        <tr><td>α⁻¹ (fine structure)</td><td class="mono">(4π)³ᐟ²·π·[47/48 + 10/(3·48³) + 22/(3·48⁵)]</td><td><span class="badge t2">Tier 2</span></td><td class="val">137.035999055 · 0.3σ from Cs (2018)</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19011758_UFFT_Fine_Structure_Constant.md" rel="noopener">#3</a></td></tr>
+        <tr><td>sin²θ_W (geometric)</td><td class="mono">(17 − 3√17)/20</td><td><span class="badge t1">Tier 1</span></td><td class="val">0.14%</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19306610_UFFT_Weinberg_Angle.md" rel="noopener">#41</a></td></tr>
+        <tr><td>α_s(M_Z)</td><td class="mono">C_A² − C_A·ln(C_A)/(2π)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.01σ</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19448066_Paper47_NLO_Neutrinos_AlphaS.md" rel="noopener">#47</a></td></tr>
+        <tr><td>m_H / M_Z</td><td class="mono">18/(9+√17)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.14%</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19064036_UFFT_Higgs_Z_Mass_Ratio.md" rel="noopener">#13</a></td></tr>
+        <tr><td>α_GUT⁻¹</td><td class="mono">25</td><td><span class="badge t2">Tier 2</span></td><td class="val">novel — not directly measurable</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19064416_UFFT_GUT_Scale_Beta_Functions.md" rel="noopener">#17</a></td></tr>
       </tbody>
     </table>
   </div>
@@ -110,13 +116,13 @@
     </div>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>Observable</th><th>Formula / origin</th><th>Status</th><th>Distance from experiment</th></tr></thead>
+      <thead><tr><th>Observable</th><th>Formula / origin</th><th>Status</th><th>Distance from experiment</th><th>Paper</th></tr></thead>
       <tbody>
-        <tr><td>Lorentz factor γ</td><td class="mono">γ²(1 − v²/c²) = 1 from □ → −∇' on a moving defect</td><td><span class="badge t1">Tier 1</span></td><td class="val">derived (theorem on the foam wave operator)</td></tr>
-        <tr><td>Velocity addition</td><td class="mono">w = (u+v)/(1+uv/c²) from substitution closure</td><td><span class="badge t1">Tier 1</span></td><td class="val">derived (SO(3,1) boost subgroup)</td></tr>
-        <tr><td>Length contraction</td><td class="mono">L = L₀/γ from equipotential ellipsoid</td><td><span class="badge t2">Tier 2</span></td><td class="val">corollary, exact in v/c</td></tr>
-        <tr><td>Time dilation</td><td class="mono">τ = γ·τ₀ from t' = γ(t − vx/c²)</td><td><span class="badge t2">Tier 2</span></td><td class="val">corollary, exact in v/c</td></tr>
-        <tr><td>Quadratic Lorentz violation</td><td class="mono">δc/c ~ −(a²/24)·Δ_4(k)/k² ~ (E/E_P)²</td><td><span class="badge t2">Tier 2</span></td><td class="val">~10⁻³⁸ at LHC · linear violation falsifies</td></tr>
+        <tr><td>Lorentz factor γ</td><td class="mono">γ²(1 − v²/c²) = 1 from □ → −∇' on a moving defect</td><td><span class="badge t1">Tier 1</span></td><td class="val">derived (theorem on the foam wave operator)</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/21323677_Paper73_Lorentz_Gamma_From_Foam_Wave_Kinematics.md" rel="noopener">#73</a></td></tr>
+        <tr><td>Velocity addition</td><td class="mono">w = (u+v)/(1+uv/c²) from substitution closure</td><td><span class="badge t1">Tier 1</span></td><td class="val">derived (SO(3,1) boost subgroup)</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/21323677_Paper73_Lorentz_Gamma_From_Foam_Wave_Kinematics.md" rel="noopener">#73</a></td></tr>
+        <tr><td>Length contraction</td><td class="mono">L = L₀/γ from equipotential ellipsoid</td><td><span class="badge t2">Tier 2</span></td><td class="val">corollary, exact in v/c</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/21323677_Paper73_Lorentz_Gamma_From_Foam_Wave_Kinematics.md" rel="noopener">#73</a></td></tr>
+        <tr><td>Time dilation</td><td class="mono">τ = γ·τ₀ from t' = γ(t − vx/c²)</td><td><span class="badge t2">Tier 2</span></td><td class="val">corollary, exact in v/c</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/21323677_Paper73_Lorentz_Gamma_From_Foam_Wave_Kinematics.md" rel="noopener">#73</a></td></tr>
+        <tr><td>Quadratic Lorentz violation</td><td class="mono">δc/c ~ −(a²/24)·Δ_4(k)/k² ~ (E/E_P)²</td><td><span class="badge t2">Tier 2</span></td><td class="val">~10⁻³⁸ at LHC · linear violation falsifies</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/21323677_Paper73_Lorentz_Gamma_From_Foam_Wave_Kinematics.md" rel="noopener">#73</a></td></tr>
       </tbody>
     </table>
   </div>
@@ -129,16 +135,16 @@
     </div>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>Observable</th><th>Formula</th><th>Status</th><th>Distance from experiment</th></tr></thead>
+      <thead><tr><th>Observable</th><th>Formula</th><th>Status</th><th>Distance from experiment</th><th>Paper</th></tr></thead>
       <tbody>
-        <tr><td>Koide relation</td><td class="mono">Q = (Σm)/(Σ√m)² = 2/3</td><td><span class="badge t1">Tier 1</span></td><td class="val">exact (structural)</td></tr>
-        <tr><td>m_e</td><td class="mono">r₁·M_P·exp(−(E−F)(2Δ+√Δ)/16)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.002%</td></tr>
-        <tr><td>m_μ</td><td class="mono">Koide from m_e, θ = 2/9</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.004%</td></tr>
-        <tr><td>m_τ</td><td class="mono">Koide from m_e, θ = 2/9</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.009%</td></tr>
-        <tr><td>m₁ (lightest ν)</td><td class="mono">= 0</td><td><span class="badge t1">Tier 1</span></td><td class="val">exact theorem</td></tr>
-        <tr><td>m₃ (ν)</td><td class="mono">m_e·exp(−(11+13√17)/4)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.075%</td></tr>
-        <tr><td>Mass hierarchy</td><td class="mono">normal ordering forced</td><td><span class="badge t1">Tier 1</span></td><td class="val">theorem</td></tr>
-        <tr><td>|Δm²₃₂| / Δm²₂₁</td><td class="mono">= 33 (Eisenstein norm, 33 = S² − C_A·P)</td><td><span class="badge t4">Tier 4</span></td><td class="val">≈0.5σ · pending formal derivation</td></tr>
+        <tr><td>Koide relation</td><td class="mono">Q = (Σm)/(Σ√m)² = 2/3</td><td><span class="badge t1">Tier 1</span></td><td class="val">exact (structural)</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19063774_UFFT_Lepton_Mass_Ratios.md" rel="noopener">#10</a></td></tr>
+        <tr><td>m_e</td><td class="mono">r₁·M_P·exp(−(E−F)(2Δ+√Δ)/16)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.002%</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19307003_UFFT_Particle_Masses.md" rel="noopener">#44</a></td></tr>
+        <tr><td>m_μ</td><td class="mono">Koide from m_e, θ = 2/9</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.004%</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19185685_UFFT_Lepton_Mass_Ratios_Part_XXIV.md" rel="noopener">#31</a></td></tr>
+        <tr><td>m_τ</td><td class="mono">Koide from m_e, θ = 2/9</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.009%</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19185685_UFFT_Lepton_Mass_Ratios_Part_XXIV.md" rel="noopener">#31</a></td></tr>
+        <tr><td>m₁ (lightest ν)</td><td class="mono">= 0</td><td><span class="badge t1">Tier 1</span></td><td class="val">exact theorem</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19448066_Paper47_NLO_Neutrinos_AlphaS.md" rel="noopener">#47</a></td></tr>
+        <tr><td>m₃ (ν)</td><td class="mono">m_e·exp(−(11+13√17)/4)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.075%</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19448066_Paper47_NLO_Neutrinos_AlphaS.md" rel="noopener">#47</a></td></tr>
+        <tr><td>Mass hierarchy</td><td class="mono">normal ordering forced</td><td><span class="badge t1">Tier 1</span></td><td class="val">theorem</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19448066_Paper47_NLO_Neutrinos_AlphaS.md" rel="noopener">#47</a></td></tr>
+        <tr><td>|Δm²₃₂| / Δm²₂₁</td><td class="mono">= 33 (Eisenstein norm, 33 = S² − C_A·P)</td><td><span class="badge t4">Tier 4</span></td><td class="val">≈0.5σ · pending formal derivation</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19625005_Paper65_Neutrino_Mass_Ratio_Eisenstein.md" rel="noopener">#65</a></td></tr>
       </tbody>
     </table>
   </div>
@@ -151,15 +157,15 @@
     </div>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>Observable</th><th>Formula</th><th>Status</th><th>Distance from experiment</th></tr></thead>
+      <thead><tr><th>Observable</th><th>Formula</th><th>Status</th><th>Distance from experiment</th><th>Paper</th></tr></thead>
       <tbody>
-        <tr><td>λ (Cabibbo, NLO)</td><td class="mono">sin(π/14)·(1 + √17/363)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.22505 · 0.07σ</td></tr>
-        <tr><td>A (Wolfenstein)</td><td class="mono">(F − r₁)/F = (19+√17)/28</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.82583 · −0.015σ</td></tr>
-        <tr><td>R_b (CKM triangle)</td><td class="mono">r₁²/(r₁r₂ − 1) = (49 − 9√17)/30</td><td><span class="badge t1">Tier 1</span></td><td class="val">0.39640 · 0.36σ</td></tr>
-        <tr><td>ρ̄</td><td class="mono">R_b·cos(δ_CKM)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.15898 · −0.002σ</td></tr>
-        <tr><td>η̄</td><td class="mono">R_b·sin(δ_NLO)</td><td><span class="badge t3">Tier 3</span></td><td class="val">0.3478 · lever-arm phase residual</td></tr>
-        <tr><td>δ_CKM</td><td class="mono">inter-type torsion operator, (C_A−1):1</td><td><span class="badge t2">Tier 2</span></td><td class="val">66.36° · 0.25σ</td></tr>
-        <tr><td>m_d / m_s</td><td class="mono">sin²(π/14)</td><td><span class="badge t2">Tier 2</span></td><td class="val">1.0%</td></tr>
+        <tr><td>λ (Cabibbo, NLO)</td><td class="mono">sin(π/14)·(1 + √17/363)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.22505 · 0.07σ</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19477100_Paper51_epsilon_NLO_derivation.md" rel="noopener">#51</a></td></tr>
+        <tr><td>A (Wolfenstein)</td><td class="mono">(F − r₁)/F = (19+√17)/28</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.82583 · −0.015σ</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19625071_Paper66_Wolfenstein_A_Parameter_NLO.md" rel="noopener">#66</a></td></tr>
+        <tr><td>R_b (CKM triangle)</td><td class="mono">r₁²/(r₁r₂ − 1) = (49 − 9√17)/30</td><td><span class="badge t1">Tier 1</span></td><td class="val">0.39640 · 0.36σ</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19626475_Paper69_Rb_Denominator_Operator_Perturbation.md" rel="noopener">#69</a></td></tr>
+        <tr><td>ρ̄</td><td class="mono">R_b·cos(δ_CKM)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.15898 · −0.002σ</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19624977_Paper64_Wolfenstein_Rhobar_NLO.md" rel="noopener">#64</a></td></tr>
+        <tr><td>η̄</td><td class="mono">R_b·sin(δ_NLO)</td><td><span class="badge t3">Tier 3</span></td><td class="val">0.3478 · lever-arm phase residual</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19625122_Paper67_NLO_Delta_CKM_EtaBar_Closure.md" rel="noopener">#67</a></td></tr>
+        <tr><td>δ_CKM</td><td class="mono">inter-type torsion operator, (C_A−1):1</td><td><span class="badge t2">Tier 2</span></td><td class="val">66.36° · 0.25σ</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19306447_UFFT_InterType_Torsion_Operator.md" rel="noopener">#39</a></td></tr>
+        <tr><td>m_d / m_s</td><td class="mono">sin²(π/14)</td><td><span class="badge t2">Tier 2</span></td><td class="val">1.0%</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19197458_UFFT_CKM_Matrix.md" rel="noopener">#34</a></td></tr>
       </tbody>
     </table>
   </div>
@@ -172,13 +178,13 @@
     </div>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>Observable</th><th>Formula</th><th>Status</th><th>Distance from experiment</th></tr></thead>
+      <thead><tr><th>Observable</th><th>Formula</th><th>Status</th><th>Distance from experiment</th><th>Paper</th></tr></thead>
       <tbody>
-        <tr><td>tan²θ₁₂</td><td class="mono">(√17/9)(1 − √17/144)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.44501 · 0.074σ</td></tr>
-        <tr><td>sin²θ₂₃</td><td class="mono">1/2 + √17/81</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.5509 · 0.2σ</td></tr>
-        <tr><td>sin²θ₁₃</td><td class="mono">(√17/27)²(1 − √17/162)²</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.02215 · 0.2σ</td></tr>
-        <tr><td>δ_PMNS</td><td class="mono">3πR = 200.7°</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.15σ (±25°)</td></tr>
-        <tr><td>δ_PMNS / δ_CKM</td><td class="mono">= 3 (colour factor C_A)</td><td><span class="badge t1">Tier 1</span></td><td class="val">novel — testable by DUNE ~2035</td></tr>
+        <tr><td>tan²θ₁₂</td><td class="mono">(√17/9)(1 − √17/144)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.44501 · 0.074σ</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19626978_Paper71_Solar_Angle_NLO_Eigenvalue_SelfEnergy.md" rel="noopener">#71</a></td></tr>
+        <tr><td>sin²θ₂₃</td><td class="mono">1/2 + √17/81</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.5509 · 0.2σ</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19448066_Paper47_NLO_Neutrinos_AlphaS.md" rel="noopener">#47</a></td></tr>
+        <tr><td>sin²θ₁₃</td><td class="mono">(√17/27)²(1 − √17/162)²</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.02215 · 0.2σ</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19448066_Paper47_NLO_Neutrinos_AlphaS.md" rel="noopener">#47</a></td></tr>
+        <tr><td>δ_PMNS</td><td class="mono">3πR = 200.7°</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.15σ (±25°)</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19198775_UFFT_CP_Phases.md" rel="noopener">#36</a></td></tr>
+        <tr><td>δ_PMNS / δ_CKM</td><td class="mono">= 3 (colour factor C_A)</td><td><span class="badge t1">Tier 1</span></td><td class="val">novel — testable by DUNE ~2035</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19198775_UFFT_CP_Phases.md" rel="noopener">#36</a></td></tr>
       </tbody>
     </table>
   </div>
@@ -191,19 +197,20 @@
     </div>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>Observable</th><th>Formula / origin</th><th>Status</th><th>Distance from experiment</th></tr></thead>
+      <thead><tr><th>Observable</th><th>Formula / origin</th><th>Status</th><th>Distance from experiment</th><th>Paper</th></tr></thead>
       <tbody>
-        <tr><td>Ω_DM / Ω_b</td><td class="mono">3(1 + 2√3)/2⁴ᐟ³ = 5.3147</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.92% (Planck 2018)</td></tr>
-        <tr><td>ρ_Λ (dark energy)</td><td class="mono">ρ₀(l_P/R_U)² × 6/7</td><td><span class="badge t2">Tier 2</span></td><td class="val">1.4% (Planck 2018)</td></tr>
-        <tr><td>r_p (proton radius)</td><td class="mono">4ℏ/(m_p c)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.02%</td></tr>
-        <tr><td>Bekenstein area quantum k</td><td class="mono">= C_A = 3</td><td><span class="badge t1">Tier 1</span></td><td class="val">exact</td></tr>
-        <tr><td>Schwarzschild g_tt, g_rr</td><td class="mono">covariant vacuum density, ν = 1/2 (static + moving source via substitution)</td><td><span class="badge t2">Tier 2</span></td><td class="val">exact match to GR · moving case kinematic, exact in v/c</td></tr>
-        <tr><td>Frame-dragging (gravitomagnetism)</td><td class="mono">h_tφ = 2GJ sin²θ/(c²r) from substitution on rotating source</td><td><span class="badge t2">Tier 2</span></td><td class="val">leading Kerr multipole · kinematic derivation</td></tr>
-        <tr><td>Photon-graviton speed lockstep</td><td class="mono">δc_γ = δc_g at (E/E_P)² (same BCC site Laplacian for A₁g and T₂g modes)</td><td><span class="badge t2">Tier 2</span></td><td class="val">|Δc/c| ~ 10⁻⁴⁵ vs GW170817 bound 3×10⁻¹⁵ · locked at all foreseeable precision</td></tr>
-        <tr><td>Einstein equations</td><td class="mono">unimodular, from foam action</td><td><span class="badge t2">Tier 2</span></td><td class="val">consistent with all GR tests</td></tr>
-        <tr><td>Maxwell equations (all 4)</td><td class="mono">□D = 0 + Helmholtz + Volterra · A = vφ/c² for moving sources</td><td><span class="badge t2">Tier 2</span></td><td class="val">exact</td></tr>
-        <tr><td>Friedmann equations (both)</td><td class="mono">foam energy conservation</td><td><span class="badge t2">Tier 2</span></td><td class="val">exact</td></tr>
-        <tr><td>Cosmological constant</td><td class="mono">Λ = integration constant (dissolved)</td><td><span class="badge t4">Tier 4</span></td><td class="val">resolves the 10¹²³ discrepancy</td></tr>
+        <tr><td>Ω_DM / Ω_b</td><td class="mono">3(1 + 2√3)/2⁴ᐟ³ = 5.3147</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.92% (Planck 2018)</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19448089_Paper49_Baryon_Bekenstein_Cosmo.md" rel="noopener">#49</a></td></tr>
+        <tr><td>ρ_Λ (dark energy)</td><td class="mono">ρ₀(l_P/R_U)² × 6/7</td><td><span class="badge t2">Tier 2</span></td><td class="val">1.4% (Planck 2018)</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19483955_Paper53_Dark_Energy_6_7_Factor.md" rel="noopener">#53</a></td></tr>
+        <tr><td>r_p (proton radius)</td><td class="mono">4ℏ/(m_p c)</td><td><span class="badge t2">Tier 2</span></td><td class="val">0.02%</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19624911_Paper62_Independent_Convergence_Proton_Radius_and_Vacuum_Energy.md" rel="noopener">#62</a></td></tr>
+
+        <tr><td>Bekenstein area quantum k</td><td class="mono">= C_A = 3</td><td><span class="badge t1">Tier 1</span></td><td class="val">exact</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19448089_Paper49_Baryon_Bekenstein_Cosmo.md" rel="noopener">#49</a></td></tr>
+        <tr><td>Schwarzschild g_tt, g_rr</td><td class="mono">covariant vacuum density, ν = 1/2 (static + moving source via substitution)</td><td><span class="badge t2">Tier 2</span></td><td class="val">exact match to GR · moving case kinematic, exact in v/c</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19184702_UFFT_Schwarzschild_Metric.md" rel="noopener">#28</a> · <a href="https://github.com/ufft-info/UFFT/blob/main/papers/21323677_Paper73_Lorentz_Gamma_From_Foam_Wave_Kinematics.md" rel="noopener">#73</a></td></tr>
+        <tr><td>Frame-dragging (gravitomagnetism)</td><td class="mono">h_tφ = 2GJ sin²θ/(c²r) from substitution on rotating source</td><td><span class="badge t2">Tier 2</span></td><td class="val">leading Kerr multipole · kinematic derivation</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19307177_UFFT_Kerr_Metric.md" rel="noopener">#46</a> · <a href="https://github.com/ufft-info/UFFT/blob/main/papers/21323677_Paper73_Lorentz_Gamma_From_Foam_Wave_Kinematics.md" rel="noopener">#73</a></td></tr>
+        <tr><td>Photon-graviton speed lockstep</td><td class="mono">δc_γ = δc_g at (E/E_P)² (same BCC site Laplacian for A₁g and T₂g modes)</td><td><span class="badge t2">Tier 2</span></td><td class="val">|Δc/c| ~ 10⁻⁴⁵ vs GW170817 bound 3×10⁻¹⁵ · locked at all foreseeable precision</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/21323677_Paper73_Lorentz_Gamma_From_Foam_Wave_Kinematics.md" rel="noopener">#73</a></td></tr>
+        <tr><td>Einstein equations</td><td class="mono">unimodular, from foam action</td><td><span class="badge t2">Tier 2</span></td><td class="val">consistent with all GR tests</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19063718_UFFT_Friedmann_Einstein_Hilbert.md" rel="noopener">#9</a></td></tr>
+        <tr><td>Maxwell equations (all 4)</td><td class="mono">□D = 0 + Helmholtz + Volterra · A = vφ/c² for moving sources</td><td><span class="badge t2">Tier 2</span></td><td class="val">exact</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19185556_UFFT_Maxwell_Equations_Full.md" rel="noopener">#29</a></td></tr>
+        <tr><td>Friedmann equations (both)</td><td class="mono">foam energy conservation</td><td><span class="badge t2">Tier 2</span></td><td class="val">exact</td><td class="mono"><a href="https://github.com/ufft-info/UFFT/blob/main/papers/19063718_UFFT_Friedmann_Einstein_Hilbert.md" rel="noopener">#9</a></td></tr>
+        <tr><td>Cosmological constant</td><td class="mono">Λ = integration constant (dissolved)</td><td><span class="badge t4">Tier 4</span></td><td class="val">resolves the 10¹²³ discrepancy</td><td class="mono faint">—</td></tr>
       </tbody>
     </table>
   </div>

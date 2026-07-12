@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RM0KGH86BC"></script>
 <script>
@@ -11,10 +10,13 @@
   gtag('js', new Date());
   gtag('config', 'G-RM0KGH86BC');
 </script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Sound of the Foam — UFFT</title>
 <meta name="description" content="A sonification of the truncated octahedron's Laplacian spectrum — the six UFFT eigenvalues {0, 2.438, 4, 6.562, 7, 9} mapped to pitch by frequency proportional to the square root of the eigenvalue." />
 <link rel="canonical" href="https://ufft.info/sound.html" />
+<meta name="robots" content="index, follow" />
 <meta name="author" content="Luke Martin" />
-<meta name="theme-color" content="#05050a" />
+<meta name="theme-color" content="#0a0d12" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Unified Foam Field Theory" />
@@ -23,335 +25,164 @@
 <meta property="og:url" content="https://ufft.info/sound.html" />
 <meta property="og:image" content="https://ufft.info/assets/og.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<title>UFFT, The Sound of the Foam</title>
+<link rel="stylesheet" href="assets/styles.css" />
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap');
-
-  :root {
-    --bg: #05050a;
-    --surface: #0d0d18;
-    --border: #1e1e35;
-    --accent: #7b5ea7;
-    --accent2: #4fc3f7;
-    --accent3: #e040fb;
-    --text: #c8c8e0;
-    --muted: #55556a;
-    --white: #eeeef8;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Space Grotesk', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px 60px;
-  }
-
-  header {
-    text-align: center;
-    margin-bottom: 48px;
-    max-width: 600px;
-  }
-
-  .eyebrow {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-
-  h1 {
-    font-size: clamp(28px, 6vw, 48px);
-    font-weight: 600;
-    color: var(--white);
-    line-height: 1.1;
-    margin-bottom: 14px;
-  }
-
-  h1 span {
-    background: linear-gradient(90deg, var(--accent), var(--accent3));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .subtitle {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.6;
-    max-width: 460px;
-    margin: 0 auto;
-  }
-
-  /* Canvas */
+  /* page-local: sonification UI, built on the site tokens */
   #waveCanvas {
-    width: 100%;
-    max-width: 700px;
-    height: 130px;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    background: var(--surface);
-    margin-bottom: 32px;
-    display: block;
+    width: 100%; height: 150px; display: block;
+    background: linear-gradient(180deg, #0e1622, #0a0f17);
   }
-
-  /* Mode grid */
-  .modes-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    width: 100%;
-    max-width: 700px;
-  }
-
+  .wave-wrap { border: 1px solid var(--border); border-radius: var(--radius-panel); overflow: hidden; }
   .modes {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
-    width: 100%;
-    max-width: 700px;
-    margin-bottom: 32px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
   }
-
+  @media (max-width: 760px) { .modes { grid-template-columns: 1fr; } }
   .mode-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 14px 16px;
-    cursor: pointer;
-    transition: border-color 0.15s, background 0.15s;
-    position: relative;
-    overflow: hidden;
+    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-panel);
+    padding: 16px 18px; cursor: pointer; position: relative; overflow: hidden;
+    display: grid; gap: 3px; align-content: start;
+    transition: border-color .15s, background .15s;
   }
-
   .mode-card::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-    background: var(--mode-color, var(--accent));
-    opacity: 0.5;
-    transition: opacity 0.15s;
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--mode-color, var(--accent)); opacity: .45; transition: opacity .15s;
   }
-
-  .mode-card.active {
-    border-color: var(--mode-color, var(--accent));
-    background: #12121f;
-  }
-
+  .mode-card:hover { border-color: var(--border-2); }
+  .mode-card.active { border-color: var(--mode-color, var(--accent)); background: var(--panel-2); }
   .mode-card.active::before { opacity: 1; }
-
-  .mode-irrep {
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 4px;
-  }
-
-  .mode-freq {
-    font-size: 11px;
-    color: var(--muted);
-    margin-bottom: 2px;
-  }
-
-  .mode-desc {
-    font-size: 10px;
-    color: var(--muted);
-    line-height: 1.4;
-    margin-top: 6px;
-  }
-
-  .mode-hz {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    color: var(--mode-color, var(--accent));
-    margin-top: 4px;
-  }
-
-  /* Controls */
-  .controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 700px;
-    margin-bottom: 28px;
-  }
-
-  .btn {
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    padding: 12px 24px;
-    border-radius: 3px;
-    border: 1px solid;
-    cursor: pointer;
-    transition: all 0.15s;
-    background: transparent;
-  }
-
-  .btn-primary {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-  .btn-primary:hover, .btn-primary.playing {
-    background: var(--accent);
-    color: var(--bg);
-  }
-
-  .btn-all {
-    border-color: var(--accent3);
-    color: var(--accent3);
-  }
-  .btn-all:hover, .btn-all.playing {
-    background: var(--accent3);
-    color: var(--bg);
-  }
-
-  .btn-beat {
-    border-color: var(--accent2);
-    color: var(--accent2);
-  }
-  .btn-beat:hover, .btn-beat.playing {
-    background: var(--accent2);
-    color: var(--bg);
-  }
-
-  /* Sliders */
-  .sliders {
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    max-width: 700px;
-    margin-bottom: 32px;
-  }
-
-  .slider-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    align-items: center;
-    min-width: 140px;
-  }
-
-  .slider-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-  }
-
-  input[type=range] {
-    width: 140px;
-    accent-color: var(--accent);
-  }
-
-  .slider-val {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-  }
-
-  /* Beat info */
-  .beat-info {
-    width: 100%;
-    max-width: 700px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent2);
-    border-radius: 4px;
-    padding: 16px 20px;
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--muted);
-  }
-
-  .beat-info strong { color: var(--white); font-weight: 600; }
-  .beat-info code {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    color: var(--accent2);
-  }
+  .mode-irrep { font-family: var(--mono); font-size: 1rem; font-weight: 700; color: var(--text); }
+  .mode-freq { font-family: var(--mono); font-size: 0.8125rem; color: var(--text-dim); }
+  .mode-hz { font-family: var(--mono); font-size: 0.75rem; color: var(--mode-color, var(--accent)); }
+  .mode-desc { font-size: 0.8125rem; color: var(--text-faint); line-height: 1.45; margin-top: 5px; }
+  .mode-phys { font-size: 0.8125rem; color: var(--text-dim); font-weight: 600; }
+  .sound-ctrls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .sliders { display: flex; gap: 28px; flex-wrap: wrap; }
+  .slider-group { display: grid; gap: 4px; justify-items: start; }
+  .slider-label { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-faint); }
+  .sliders input[type=range] { width: 150px; accent-color: var(--accent); }
+  .slider-val { font-family: var(--mono); font-size: 0.8125rem; color: var(--accent); }
 </style>
 </head>
 <body>
 
-<header style="width:100%;max-width:700px;display:flex;justify-content:space-between;align-items:center;margin-bottom:36px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.03em">
-  <a href="index.html" style="color:var(--accent);text-decoration:none;font-weight:700">B + V = D</a>
-  <nav style="display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end">
-    <a href="index.html" style="color:var(--muted);text-decoration:none">Home</a>
-    <a href="theory.html" style="color:var(--muted);text-decoration:none">Theory</a>
-    <a href="predictions.html" style="color:var(--muted);text-decoration:none">Predictions</a>
-    <a href="verify.html" style="color:var(--muted);text-decoration:none">Verify</a>
-    <span style="color:var(--accent3)">Sound</span>
-  </nav>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="logo">B + V = D</span>
+      <span class="name">Unified Foam Field Theory</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu">Menu</button>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="predictions.html">Predictions</a>
+      <a href="papers.html">Papers</a>
+      <a href="verify.html">Verify</a>
+      <a href="sound.html" class="active">Sound</a>
+      <a href="ask.html">Ask</a>
+      <a href="https://github.com/ufft-info/UFFT" class="ext" rel="noopener">Repository</a>
+    </nav>
+  </div>
 </header>
 
-<header>
-  <div class="eyebrow">Unified Foam Field Theory</div>
-  <h1>The <span>Sound</span> of the Foam</h1>
-  <p class="subtitle">The truncated octahedron Kelvin cell has a discrete Laplacian spectrum: six eigenvalues {0, 2.438, 4, 6.562, 7, 9}. Each is mapped to pitch with frequency proportional to √λ. A sonification of the real spectrum, not a claim that sound makes physics.</p>
-</header>
+<div class="wrap">
 
-<canvas id="waveCanvas"></canvas>
-
-<div class="modes-label">Symmetry irreps · O_h point group</div>
-<div class="modes" id="modeGrid"></div>
-
-<div class="controls">
-  <button class="btn btn-primary" id="btnPlay" onclick="toggleSelected()">▶ Play Selected</button>
-  <button class="btn btn-all" id="btnAll" onclick="toggleAll()">◈ Sound the Foam</button>
-  <button class="btn btn-beat" id="btnBeat" onclick="toggleBeat()">~ Beat Frequencies</button>
-  <button class="btn" style="border-color:var(--muted);color:var(--muted)" onclick="stopAll()">■ Stop</button>
-</div>
-
-<div class="sliders">
-  <div class="slider-group">
-    <span class="slider-label">VOLUME</span>
-    <input type="range" min="0" max="100" value="60" oninput="setVolume(this.value)">
-    <span class="slider-val" id="volVal">60%</span>
+<section>
+  <div class="cluster">
+    <div class="section-eyebrow">Sonification</div>
+    <h1 class="page-title">The <span style="color:var(--accent)">sound</span> of the foam</h1>
+    <p class="section-sub">The truncated octahedron Kelvin cell has a discrete Laplacian spectrum:
+      six eigenvalues {0, 2.438, 4, 6.562, 7, 9}. Each is mapped to pitch with frequency
+      proportional to √λ. A sonification of the real spectrum, not a claim that sound makes physics.</p>
   </div>
-  <div class="slider-group">
-    <span class="slider-label">OCTAVE SHIFT</span>
-    <input type="range" min="-2" max="2" value="0" step="1" oninput="setOctave(this.value)">
-    <span class="slider-val" id="octVal">0</span>
-  </div>
-  <div class="slider-group">
-    <span class="slider-label">REVERB</span>
-    <input type="range" min="0" max="100" value="40" oninput="setReverb(this.value)">
-    <span class="slider-val" id="revVal">40%</span>
-  </div>
-</div>
 
-<div class="beat-info">
-  <strong>Why beats?</strong> The spectrum has one close pair: the heavier fermion band at <code>λ = 6.562</code> and the gluon mode at <code>λ = 7</code>. Sounded together they beat at their difference, a slow throb of a few Hz. The gaps and ratios between the six modes (the √17 in the fermion split, the sums 9 and 16 in the master equation) are where UFFT’s derived numbers come from. This is a sonification of the real eigenvalues, not a claim that the beating itself generates mass.
-</div>
+  <div class="wave-wrap"><canvas id="waveCanvas"></canvas></div>
 
+  <div class="cluster">
+    <div class="section-eyebrow">Symmetry irreps · O_h point group</div>
+  </div>
+  <div class="modes" id="modeGrid"></div>
+
+  <div class="sound-ctrls">
+    <button class="btn primary" id="btnPlay" onclick="toggleSelected()">▶ Play selected</button>
+    <button class="btn ghost" id="btnAll" onclick="toggleAll()">◈ Sound the foam</button>
+    <button class="btn ghost" id="btnBeat" onclick="toggleBeat()">~ Beat frequencies</button>
+    <button class="btn ghost" onclick="stopAll()" style="color:var(--text-dim)">■ Stop</button>
+  </div>
+
+  <div class="sliders">
+    <div class="slider-group">
+      <span class="slider-label">Volume</span>
+      <input type="range" min="0" max="100" value="60" oninput="setVolume(this.value)">
+      <span class="slider-val" id="volVal">60%</span>
+    </div>
+    <div class="slider-group">
+      <span class="slider-label">Octave shift</span>
+      <input type="range" min="-2" max="2" value="0" step="1" oninput="setOctave(this.value)">
+      <span class="slider-val" id="octVal">0</span>
+    </div>
+    <div class="slider-group">
+      <span class="slider-label">Reverb</span>
+      <input type="range" min="0" max="100" value="40" oninput="setReverb(this.value)">
+      <span class="slider-val" id="revVal">40%</span>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h3>Why beats?</h3>
+    <p class="muted">The spectrum has one close pair: the heavier fermion band at
+      <code class="inline">λ = 6.562</code> and the gluon mode at <code class="inline">λ = 7</code>.
+      Sounded together they beat at their difference, a slow throb of a few Hz. The gaps and
+      ratios between the six modes (the √17 in the fermion split, the sums 9 and 16 in the master
+      equation) are where UFFT's derived numbers come from. This is a sonification of the real
+      eigenvalues, not a claim that the beating itself generates mass.</p>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="sig">B + V = D</div>
+      <p class="faint">Luke Martin · Independent Researcher · Newcastle, Australia</p>
+      <a href="https://orcid.org/0009-0006-3716-5951" rel="noopener">ORCID 0009-0006-3716-5951</a>
+      <a href="https://www.instagram.com/ufft.info/" rel="noopener">Instagram @ufft.info</a>
+    </div>
+    <div>
+      <h4>Repository</h4>
+      <a href="https://github.com/ufft-info/UFFT" rel="noopener">GitHub</a>
+      <a href="https://github.com/ufft-info/UFFT/blob/main/UFFT_Core_Framework_v9.md" rel="noopener">Core Framework</a>
+      <a href="https://github.com/ufft-info/UFFT/blob/main/papers/INDEX.md" rel="noopener">Papers index (DOIs)</a>
+    </div>
+    <div>
+      <h4>On this site</h4>
+      <a href="index.html">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="predictions.html">Predictions</a>
+      <a href="verify.html">Verify</a>
+    </div>
+    <div class="disc">
+      <p class="faint">A sonification of the real Laplacian spectrum of the Kelvin cell, mapped to
+        pitch by frequency ∝ √λ. It is a way to hear the structure, not a physical claim; the
+        physics lives in the <a href="theory.html">theory</a> and the
+        <a href="verify.html">runnable code</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
 <script>
 // UFFT eigenvalue modes, Oh point group of truncated octahedron
 // Eigenvalues from the Kelvin cell vibrational spectrum, normalised
 // Base frequencies chosen to span audible range with meaningful ratios
+// Colours follow the site palette (tier colours + accents), still one per physics channel
 const MODES = [
   {
     irrep: 'A₁g',
     eigenval: 0.0,
     baseFreq: 55,
-    color: '#7b5ea7',
+    color: '#5ad1c8',
     desc: 'Zero mode. True frequency is zero (the vacuum is silent); shown as a low 55 Hz reference.',
     physics: 'Photon / vacuum'
   },
@@ -359,7 +190,7 @@ const MODES = [
     irrep: 'T₁u',
     eigenval: 2.438,
     baseFreq: 171.8,
-    color: '#e040fb',
+    color: '#a371f7',
     desc: 'Lighter triply-degenerate band. Root (9−√17)/2.',
     physics: 'Fermions, three generations'
   },
@@ -367,7 +198,7 @@ const MODES = [
     irrep: 'Eg',
     eigenval: 4.0,
     baseFreq: 220.0,
-    color: '#4fc3f7',
+    color: '#58a6ff',
     desc: 'Doubly degenerate. The electroweak mode.',
     physics: 'W and Z bosons'
   },
@@ -375,7 +206,7 @@ const MODES = [
     irrep: 'T₁u',
     eigenval: 6.562,
     baseFreq: 281.8,
-    color: '#ce93d8',
+    color: '#d2a8ff',
     desc: 'Heavier triply-degenerate band. Root (9+√17)/2.',
     physics: 'Fermions, heavier band'
   },
@@ -383,7 +214,7 @@ const MODES = [
     irrep: 'T₂g',
     eigenval: 7.0,
     baseFreq: 291.0,
-    color: '#f48fb1',
+    color: '#f0b429',
     desc: 'Quadruply degenerate hexagonal mode.',
     physics: 'Gluons, strong force'
   },
@@ -391,7 +222,7 @@ const MODES = [
     irrep: 'A₂u',
     eigenval: 9.0,
     baseFreq: 330.0,
-    color: '#81c784',
+    color: '#3fb950',
     desc: 'Top mode. Antisymmetric, parity-odd.',
     physics: 'The Higgs'
   },
@@ -570,7 +401,7 @@ function toggleBeat() {
   stopAll();
   initAudio();
   playingBeat = true;
-  // Play the near-degenerate pairs: Eg/Eg', T1u/T1u'
+  // Play the near-degenerate pair: T1u' / T2g
   [3, 4].forEach(i => { activeNodes[i] = playMode(i); });
   updateBtns();
   drawWave();
@@ -580,9 +411,9 @@ function updateBtns() {
   document.getElementById('btnPlay').classList.toggle('playing', playingSelected);
   document.getElementById('btnAll').classList.toggle('playing', playingAll);
   document.getElementById('btnBeat').classList.toggle('playing', playingBeat);
-  document.getElementById('btnPlay').textContent = playingSelected ? '■ Stop Selected' : '▶ Play Selected';
-  document.getElementById('btnAll').textContent = playingAll ? '■ Stop' : '◈ Sound the Foam';
-  document.getElementById('btnBeat').textContent = playingBeat ? '■ Stop Beats' : '~ Beat Frequencies';
+  document.getElementById('btnPlay').textContent = playingSelected ? '■ Stop selected' : '▶ Play selected';
+  document.getElementById('btnAll').textContent = playingAll ? '■ Stop' : '◈ Sound the foam';
+  document.getElementById('btnBeat').textContent = playingBeat ? '■ Stop beats' : '~ Beat frequencies';
 }
 
 function setVolume(v) {
@@ -624,7 +455,7 @@ function drawWave() {
   let t = 0;
 
   function frame() {
-    canvasCtx.fillStyle = '#0d0d18';
+    canvasCtx.fillStyle = '#0e1622';
     canvasCtx.fillRect(0, 0, W, H);
 
     const activeIndices = Object.keys(activeNodes).map(Number);
@@ -686,7 +517,7 @@ function renderModes() {
       <div class="mode-freq">λ = ${mode.eigenval.toFixed(3)}</div>
       <div class="mode-hz">${Math.round(getFreq(mode))} Hz</div>
       <div class="mode-desc">${mode.desc}</div>
-      <div class="mode-desc" style="color:${mode.color}88;margin-top:4px">${mode.physics}</div>
+      <div class="mode-phys" style="color:${mode.color}">${mode.physics}</div>
     `;
     card.onclick = () => toggleModeSelect(i);
     grid.appendChild(card);
@@ -697,10 +528,6 @@ function renderModes() {
 renderModes();
 drawWave();
 </script>
-<footer style="width:100%;max-width:700px;margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);text-align:center;line-height:1.9">
-  A sonification of the real Laplacian spectrum of the Kelvin cell, mapped to pitch by frequency &#8733; &#8730;&#955;. It is a way to hear the structure, not a physical claim; the physics lives in the <a href="theory.html" style="color:var(--accent2);text-decoration:none">theory</a> and the <a href="verify.html" style="color:var(--accent2);text-decoration:none">runnable code</a>.<br>
-  Unified Foam Field Theory &nbsp;·&nbsp; <a href="index.html" style="color:var(--accent2);text-decoration:none">ufft.info</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/ufft.info/" rel="noopener" style="color:var(--accent2);text-decoration:none">@ufft.info</a>
-</footer>
 
 </body>
 </html>
