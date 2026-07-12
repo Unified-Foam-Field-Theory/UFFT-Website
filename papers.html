@@ -122,7 +122,7 @@ var PAPERS = [
   {n:"—",  part:"",      id:"19363008", cat:"Foundations & axiom", title:"Local Decision Dynamics", sum:"The local decision principle and eight structural results."},
   {n:"48", part:"",      id:"19662029", cat:"Foundations & axiom", title:"The Standard Model From One Matrix (v2)", sum:"S = ψ†L_Tψ yields the full Standard Model Lagrangian."},
   {n:"50", part:"",      id:"19662068", cat:"Foundations & axiom", title:"Uniqueness of the Foam Cell (v2)", sum:"The truncated octahedron is unique among Fedorov cells (Δ = 17 prime)."},
-  {n:"59", part:"",      id:"19491095", cat:"Foundations & axiom", title:"The Central Theorem", sum:"BCC lattice → Standard Model + general relativity, all parameters from seven integers."},
+  {n:"59", part:"",      id:"21323529", cat:"Foundations & axiom", title:"The Central Theorem (v2)", sum:"BCC lattice → Standard Model + general relativity, all parameters from seven integers. v2: torsion citations corrected; composite status = proof sketch pending external audit."},
   {n:"60", part:"",      id:"19491125", cat:"Foundations & axiom", title:"Four Closing Theorems", sum:"Anomaly cancellation, generations, gravity, and the continuum limit."},
   {n:"63", part:"LXIII", id:"19624955", cat:"Foundations & axiom", title:"Pure Mathematics of the Kelvin Cell", sum:"Face-Laplacian spectrum, O_h irreps, the Q(√17) ring, Fedorov uniqueness — standalone Tier 1."},
 
@@ -143,8 +143,8 @@ var PAPERS = [
   {n:"41", part:"LII",   id:"19306610", cat:"Electroweak", title:"Weinberg Angle v2", sum:"sin²θ_W = (17−3√17)/20 = 0.23153."},
   {n:"13", part:"",      id:"19064036", cat:"Electroweak", title:"Higgs / Z Mass Ratio", sum:"m_H/M_Z = 18/(9+√17), 0.14%."},
   {n:"19", part:"",      id:"19064635", cat:"Electroweak", title:"Electroweak Predictions", sum:"M_W/M_Z, N_ν = 3, d = 3+1, ρ = 1."},
-  {n:"57", part:"",      id:"19484509", cat:"Electroweak", title:"Necessity of the Standard Model", sum:"Higgs = A₂u; fermion chirality forced."},
-  {n:"58", part:"",      id:"19484967", cat:"Electroweak", title:"Gauge-Sector Placement", sum:"SU(3)×SU(2)×U(1) forced by exhaustion."},
+  {n:"57", part:"",      id:"21323321", cat:"Electroweak", title:"Necessity of the Standard Model (v2)", sum:"Higgs = A₂u; fermion chirality forced. v2: T_hex vs inter-type T split; localisation claim withdrawn."},
+  {n:"58", part:"",      id:"21323498", cat:"Electroweak", title:"Gauge-Sector Placement (v2)", sum:"SU(3)×SU(2)×U(1) forced by exhaustion. v2: Thm 58.3 demoted to Result (Tier 2); T₂g content exactly 100% hex."},
 
   // Strong force
   {n:"18", part:"",      id:"19064581", cat:"Strong force & QCD", title:"Asymptotic Freedom & Confinement", sum:"b₀ = 7 = λ(T₂g); confinement from π₁ = ℤ."},
@@ -170,12 +170,14 @@ var PAPERS = [
   {n:"54", part:"",      id:"19484047", cat:"Mass spectrum", title:"Neutrino Mass Ratio", sum:"Δm²₃₁/Δm²₂₁ = 33 exactly."},
   {n:"65", part:"LXV",   id:"19625005", cat:"Mass spectrum", title:"Neutrino Mass Ratio — Eisenstein Norm", sum:"33 = N(r₁+r₂ω) = S² − C_A·P."},
   {n:"72", part:"LXXII", id:"19658759", cat:"Mass spectrum", title:"Dirac Operator, Generation Count, Chirality, m₃", sum:"D_F² = L_T; N_gen = mult(T₁u) = 3; hex ↔ left, square ↔ right; m₃ integer exponent (11,13,4)."},
+  {n:"74", part:"LXXIV", id:"21323789", cat:"Mass spectrum", title:"Structural Theorems for the Electron Walk Action", sum:"Three Tier-1 theorems on S_walk: step count (E−F)=22 three ways; (2Δ+√Δ) = (r₂−r₁)[2(r₂−r₁)+1]; |G|/C_A = 2F_hx = 16. Path-integral conjecture C74.4 stated."},
 
   // Gravity
   {n:"7",  part:"",      id:"19063610", cat:"Gravity & relativity", title:"Vacuum Metric", sum:"Schwarzschild + Kerr from the foam."},
   {n:"9",  part:"",      id:"19063718", cat:"Gravity & relativity", title:"Friedmann & Einstein–Hilbert", sum:"Both Friedmann equations from the foam."},
   {n:"28", part:"",      id:"19184702", cat:"Gravity & relativity", title:"Schwarzschild Complete", sum:"g_rr from incompressibility ν = 1/2."},
   {n:"46", part:"LVII",  id:"19307177", cat:"Gravity & relativity", title:"Kerr Metric", sum:"All five components; spin-½ from a Wilson loop."},
+  {n:"73", part:"LXXIII",id:"21323677", cat:"Gravity & relativity", title:"Lorentz γ from Foam Wave Kinematics", sum:"First kinematic derivation of γ: γ²(1−v²/c²)=1 from the foam wave operator. Length contraction, time dilation, SO(3,1) closure, moving Schwarzschild, Kerr dipole, δc/c ~ (E/E_P)²."},
 
   // Electromagnetism
   {n:"8",  part:"",      id:"19063671", cat:"Electromagnetism", title:"Maxwell Equations v1", sum:"All four Maxwell equations from □D = 0."},
@@ -185,6 +187,7 @@ var PAPERS = [
   {n:"1",  part:"VII",   id:"18706756", cat:"Quantum foundations", title:"Decoherence Suppression", sum:"ΔΓ/Γ = 8.22×10⁻¹¹ — the altitude test."},
   {n:"2",  part:"VIII",  id:"18706806", cat:"Quantum foundations", title:"Bell Correlations", sum:"Void-network speed c√(3/2)."},
   {n:"25", part:"",      id:"19085007", cat:"Quantum foundations", title:"S-Matrix & LSZ", sum:"LSZ from the foam; Compton to 0.002%."},
+  {n:"75", part:"LXXV",  id:"21323993", cat:"Quantum foundations", title:"The Born Rule from Imprint Statistics & the Entangled Pair State from the Antiunitary Twin Map", sum:"Born rule derived: phase-blindness from substrate stationarity + fine-graining additivity from no-signalling force p = |c|². Twin state unique via antiunitarity; Tsirelson 2√2; lab qubit unique by Schur. Five verification scripts (50 checks) on the record."},
 
   // Topology & torsion
   {n:"14", part:"",      id:"19064093", cat:"Topology & torsion", title:"Baryon / Lepton Conservation", sum:"π₁(T₂g) = ℤ; the proton is stable."},
