@@ -192,8 +192,10 @@ h1.title .em { color: var(--accent); }
 .btn {
   display: inline-block; padding: 12px 22px; border-radius: var(--radius-pill); font-weight: 500;
   font-size: 1rem; letter-spacing: var(--track-body); border: 1px solid transparent; cursor: pointer;
+  background: transparent; color: var(--text); font-family: inherit;
   transition: background .15s, border-color .15s;
 }
+.btn.ghost:hover { background: rgba(90,209,200,0.08); }
 .btn.primary { background: var(--accent); color: #06231f; }
 .btn.primary:hover { background: #7adfd7; text-decoration: none; }
 .btn.ghost { border-color: var(--border-2); color: var(--text); }
