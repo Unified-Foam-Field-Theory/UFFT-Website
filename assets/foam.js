@@ -124,6 +124,9 @@
   vGeo.setAttribute("position", new THREE.Float32BufferAttribute(vpos, 3));
   root.add(new THREE.Points(vGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.14 })));
 
+  // hook for pages that add to the cell (bubble-void.html); no effect elsewhere
+  window.UFFTCell = { THREE: THREE, root: root, hexMat: hexMat, sqMat: sqMat, edgeMat: edgeMat, onFrame: null };
+
   // lights
   scene.add(new THREE.AmbientLight(0xffffff, 0.6));
   var key = new THREE.DirectionalLight(0xbfefff, 0.9); key.position.set(5, 6, 4); scene.add(key);
@@ -155,6 +158,7 @@
     requestAnimationFrame(loop);
     if (auto) ry += 0.0032;
     root.rotation.y = ry; root.rotation.x = rx;
+    if (window.UFFTCell.onFrame) window.UFFTCell.onFrame();
     renderer.render(scene, camera);
   })();
 })();

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RM0KGH86BC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RM0KGH86BC');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bubble and void, drawn — Unified Foam Field Theory</title>
+<meta name="description" content="What a bubble is, what a void is, and why every event in the foam makes one of each. B + V = D, drawn so you can make one yourself." />
+<link rel="canonical" href="https://ufft.info/bubble-void.html" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="Luke Martin" />
+<meta name="theme-color" content="#0a0d12" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Unified Foam Field Theory" />
+<meta property="og:title" content="Bubble and void, drawn" />
+<meta property="og:description" content="Dig a hole and you make a pile. Every event in the foam makes a bubble and a void the same way. Make one yourself." />
+<meta property="og:url" content="https://ufft.info/bubble-void.html" />
+<meta property="og:image" content="https://ufft.info/assets/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Bubble and void, drawn" />
+<meta name="twitter:description" content="Dig a hole and you make a pile. Every event in the foam makes a bubble and a void the same way. Make one yourself." />
+<meta name="twitter:image" content="https://ufft.info/assets/og.png" />
+<link rel="stylesheet" href="assets/styles.css" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://ufft.info/#website", "url": "https://ufft.info/", "name": "Unified Foam Field Theory", "inLanguage": "en"}, {"@type": "Person", "@id": "https://ufft.info/#author", "name": "Luke Martin", "jobTitle": "Independent Researcher", "sameAs": ["https://orcid.org/0009-0006-3716-5951", "https://github.com/ufft-info/UFFT", "https://www.instagram.com/ufft.info/"]}, {"@type": "Article", "@id": "https://ufft.info/bubble-void.html#article", "url": "https://ufft.info/bubble-void.html", "headline": "Bubble and void, drawn", "description": "What a bubble is, what a void is, and why every event in the foam makes one of each.", "inLanguage": "en", "isPartOf": {"@id": "https://ufft.info/#website"}, "author": {"@id": "https://ufft.info/#author"}}]}</script>
+<style>
+  .bv-two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+  @media (max-width: 760px) { .bv-two { grid-template-columns: 1fr; } }
+  .bv-stage { position: relative; border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    background: radial-gradient(120% 90% at 50% 40%, #0f1824 0%, #0a0f17 70%); touch-action: none; }
+  .bv-stage canvas { display: block; width: 100%; }
+  #bv-slice { height: 300px; }
+  #bv-play { height: 460px; cursor: pointer; }
+  @media (max-width: 760px) { #bv-play { height: 380px; } }
+  .bv-hint { position: absolute; left: 14px; top: 12px; font-family: var(--mono); font-size: 0.78rem;
+    color: var(--text-dim); background: rgba(10,13,18,0.72); border: 1px solid var(--border);
+    border-radius: 8px; padding: 6px 10px; pointer-events: none; transition: opacity .4s; max-width: calc(100% - 28px); }
+  .bv-readout { display: flex; flex-wrap: wrap; gap: 10px 22px; font-family: var(--mono); font-size: 0.85rem; color: var(--text-dim); }
+  .bv-readout b { color: var(--text); font-weight: 600; }
+  .bv-readout .ok { color: var(--accent); }
+  .bv-ctrls { display: flex; gap: 10px; flex-wrap: wrap; }
+  .bv-ctrls .btn { padding: 9px 16px; font-size: 0.9rem; }
+  .sw { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+  .sw.b { background: radial-gradient(circle, #9ff3ea, #5ad1c8 60%, #2b6f6a); box-shadow: 0 0 10px rgba(90,209,200,.7); }
+  .sw.v { background: #05070a; border: 1.5px dashed var(--accent-2); }
+  .sw.d { width: 22px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, var(--accent-2), var(--accent)); }
+  .sw.c { background: var(--panel-2); border: 1px solid var(--border-2); }
+  .bv-sand svg { width: 100%; height: auto; display: block; }
+  .bv-flow { stroke-dasharray: 6 8; animation: bvflow 1.6s linear infinite; }
+  @keyframes bvflow { to { stroke-dashoffset: -28; } }
+  .bv-grain { animation: bvgrain 2.6s ease-in-out infinite; }
+  @keyframes bvgrain { 0% { offset-distance: 0%; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .bv-flow, .bv-grain { animation: none; } }
+  .bv-eq { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; width: 100%; }
+  @media (max-width: 760px) { .bv-eq { grid-template-columns: 1fr; } }
+  .bv-eq .card { padding: 22px; }
+  .bv-eq .sym { font-family: var(--mono); font-size: 1.9rem; font-weight: 700; line-height: 1; }
+  .bv-grid4 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; }
+  @media (max-width: 760px) { .bv-grid4 { grid-template-columns: 1fr; } }
+  .bv-grid4 .card { padding: 22px; }
+  .bv-grid4 svg { width: 100%; max-width: 240px; height: 90px; }
+  .bv-grid4 .card a { font-size: 0.9rem; }
+  #bv-lattice { height: 520px; cursor: grab; }
+  @media (max-width: 760px) { #bv-lattice { height: 400px; } }
+  .bv-ctrls .btn.on { border-color: var(--accent); background: rgba(90,209,200,0.10); color: var(--text); }
+  .bv-slider { display: inline-flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-dim); }
+  .bv-slider input { accent-color: var(--accent); width: 140px; }
+  .bv-tier { font-family: var(--mono); font-size: 0.72rem; color: var(--text-faint); border: 1px solid var(--border-2); border-radius: 6px; padding: 1px 7px; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="logo">B + V = D</span>
+      <span class="name">Unified Foam Field Theory</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu">Menu</button>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="predictions.html">Predictions</a>
+      <a href="papers.html">Papers</a>
+      <a href="verify.html">Verify</a>
+      <a href="sound.html">Sound</a>
+      <a href="ask.html">Ask</a>
+      <a href="https://github.com/ufft-info/UFFT" class="ext" rel="noopener">Repository</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section style="border-bottom:none;padding-bottom:18px">
+  <div class="cluster">
+    <div class="section-eyebrow">Explainer · Axiom Zero</div>
+    <h1 class="page-title">Bubble and void, drawn</h1>
+    <p class="section-sub">Everything in the framework starts from one event. Something gets pushed
+      from one place into another. Where it lands is a bubble. Where it came from is a void. This page
+      draws both, and lets you make one yourself.</p>
+    <div class="axiom"><span style="white-space:nowrap">B + V = D</span> <span class="tag">bubble + void = one displacement</span></div>
+  </div>
+</section>
+
+<!-- 1. The foam -->
+<section>
+  <div class="cluster">
+    <div class="section-eyebrow">1 · The stage</div>
+    <h3>Space is packed with cells</h3>
+    <p class="muted">Picture space as a foam, like the froth on a coffee, only packed so tightly
+      there are no gaps at all. Every cell is the same shape: a cube with its eight corners cut off,
+      giving 6 square faces and 8 hexagons. Lord Kelvin picked this shape in 1887 as the way to fill space
+      with equal cells using the least wall. The cells are unimaginably small, about
+      10<sup>&minus;35</sup> metres across, and in this picture nothing is smaller.</p>
+  </div>
+  <div class="bv-two">
+    <div class="viz">
+      <div class="bv-stage hero-canvas-wrap" style="margin:0">
+        <canvas id="foam-canvas" style="height:300px"></canvas>
+      </div>
+      <div class="bv-ctrls"><button class="btn ghost" id="bv-cell-toggle" aria-pressed="false">Put a bubble in the cell</button></div>
+      <div class="cap" id="bv-cell-cap">One cell in 3D · 14 faces · drag to rotate. At rest it holds the same amount as every other cell.</div>
+    </div>
+    <div class="viz">
+      <div class="bv-stage"><canvas id="bv-slice"></canvas></div>
+      <div class="cap">Stack the cells and cut straight through: each octagon is a cell sliced
+        through its middle, each small diamond is a cell from the next layer, touched at its square face.</div>
+    </div>
+  </div>
+  <div class="viz">
+    <div class="bv-stage"><canvas id="bv-lattice" aria-label="3D foam lattice of Kelvin cells. Drag to rotate."></canvas></div>
+    <div class="bv-ctrls" id="bv-lat-ctrls">
+      <button class="btn ghost on" data-k="shells" aria-pressed="true">Shells</button>
+      <button class="btn ghost on" data-k="edges" aria-pressed="true">Edges</button>
+      <button class="btn ghost on" data-k="bubbles" aria-pressed="true">Bubbles</button>
+      <button class="btn ghost" data-k="pairs" aria-pressed="false">Displace some</button>
+      <button class="btn ghost" data-k="reset">Reset</button>
+      <label class="bv-slider">Spread the cells <input type="range" id="bv-spread" min="0" max="100" value="0"></label>
+    </div>
+    <div class="cap" id="bv-lat-cap">The whole foam · 189 cells packed with no gaps · drag to rotate · toggle the shells, edges and bubbles</div>
+  </div>
+  <p class="muted">At rest, every cell holds the same amount. Nothing is happening. The foam is full,
+    even and quiet. For anything to happen, something has to move.</p>
+</section>
+
+<!-- 2. Sand -->
+<section>
+  <div class="cluster">
+    <div class="section-eyebrow">2 · The picture to keep</div>
+    <h3>You can't dig a hole without making a pile</h3>
+    <p class="muted">Take a spade to flat sand. Lift one scoop and drop it beside you. Now there are two
+      new things on the beach: a hole and a pile. You only did one thing. The hole and the pile are its
+      two ends, and neither can exist without the other. Fill the hole from the pile and both vanish
+      together.</p>
+  </div>
+  <div class="viz bv-sand">
+    <svg viewBox="150 20 660 280" role="img" aria-label="Flat sand with a hole on the left and a pile on the right, joined by an arrow labelled one scoop">
+      <defs>
+        <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2a2418"/><stop offset="1" stop-color="#15120c"/>
+        </linearGradient>
+        <linearGradient id="dgrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#f0b429"/><stop offset="1" stop-color="#5ad1c8"/>
+        </linearGradient>
+        <radialGradient id="pileglow" cx="0.5" cy="1" r="0.8">
+          <stop offset="0" stop-color="#5ad1c8" stop-opacity=".45"/><stop offset="1" stop-color="#5ad1c8" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <!-- sand body with hole and pile -->
+      <path d="M0 190 L200 190 C230 190 240 250 290 250 C340 250 350 190 380 190 L520 190
+               C560 190 580 128 630 128 C680 128 700 190 740 190 L900 190 L900 300 L0 300 Z" fill="url(#sand)"/>
+      <path d="M0 190 L200 190 C230 190 240 250 290 250 C340 250 350 190 380 190 L520 190
+               C560 190 580 128 630 128 C680 128 700 190 740 190 L900 190" fill="none" stroke="#6b5a3a" stroke-width="2"/>
+      <ellipse cx="630" cy="170" rx="150" ry="80" fill="url(#pileglow)"/>
+      <!-- hole rim -->
+      <path d="M205 192 C232 194 244 246 290 246 C336 246 348 194 375 192" fill="none" stroke="#f0b429" stroke-width="2.5" stroke-dasharray="7 6"/>
+      <!-- pile outline -->
+      <path d="M525 188 C562 188 582 132 630 132 C678 132 698 188 735 188" fill="none" stroke="#5ad1c8" stroke-width="3"/>
+      <!-- arrow D -->
+      <path id="dpath" d="M290 225 C330 40 560 30 628 118" fill="none" stroke="url(#dgrad)" stroke-width="3" class="bv-flow"/>
+      <path d="M616 106 L630 121 L636 101" fill="none" stroke="#5ad1c8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle r="6" fill="#e6edf3" class="bv-grain" style="offset-path: path('M290 225 C330 40 560 30 628 118');"/>
+      <!-- labels -->
+      <text x="440" y="58" fill="#e6edf3" font-family="ui-monospace, Menlo, monospace" font-size="26" text-anchor="middle">D · one scoop</text>
+      <text x="290" y="285" fill="#f0b429" font-family="ui-monospace, Menlo, monospace" font-size="26" text-anchor="middle">V · the hole</text>
+      <text x="630" y="235" fill="#5ad1c8" font-family="ui-monospace, Menlo, monospace" font-size="26" text-anchor="middle">B · the pile</text>
+                </svg>
+    <div class="cap">The pile is extra sand where there wasn't any. The hole is missing sand where there was.
+      One scoop made both.</div>
+  </div>
+  <div class="bv-eq">
+    <div class="card">
+      <div class="sym" style="color:var(--accent)">B</div>
+      <h3>Bubble</h3>
+      <p class="muted">The pile. One cell squeezed full: a packet of energy pushed into a place that was
+        already full.</p>
+    </div>
+    <div class="card">
+      <div class="sym" style="color:var(--accent-2)">V</div>
+      <h3>Void</h3>
+      <p class="muted">The hole. The place the energy left. It is emptier than the foam around it, a
+        gap the foam remembers.</p>
+    </div>
+    <div class="card">
+      <div class="sym" style="color:var(--text)">D</div>
+      <h3>Displacement</h3>
+      <p class="muted">The scoop. One event with two ends. The bubble and the void are that one thing,
+        seen from where it landed and from where it left.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Interactive -->
+<section>
+  <div class="cluster">
+    <div class="section-eyebrow">3 · Make one</div>
+    <h3>Tap a cell. Then drag the bubble away.</h3>
+    <p class="muted">Tapping a cell scoops its energy into a neighbour. You get a void where you tapped
+      and a bubble next door, joined by a thread. That thread is D. Drag the bubble anywhere and the
+      thread stretches, however far. Tap either end and both answer at once, because they are one
+      object.</p>
+  </div>
+  <div class="viz">
+    <div class="bv-stage">
+      <canvas id="bv-play" aria-label="Interactive foam. Tap a cell to create a bubble and void pair; drag the bubble to move it."></canvas>
+      <div class="bv-hint" id="bv-hint">Tap any cell</div>
+    </div>
+    <div class="bv-readout" id="bv-readout"></div>
+    <div class="bv-ctrls">
+      <button class="btn ghost" id="bv-fill">Fill the voids back in</button>
+      <button class="btn ghost" id="bv-reset">Reset</button>
+    </div>
+    <div class="legend">
+      <span class="item"><span class="sw c"></span>cell at rest</span>
+      <span class="item"><span class="sw b"></span>bubble (B)</span>
+      <span class="item"><span class="sw v"></span>void (V)</span>
+      <span class="item"><span class="sw d"></span>displacement (D)</span>
+    </div>
+  </div>
+  <div class="callout">
+    <p class="muted" style="margin:0">Watch the counter. However many pairs you make, the energy in the
+      foam never changes. Nothing is created. It is only moved, and every move leaves both ends behind.</p>
+  </div>
+</section>
+
+<!-- 4. What follows -->
+<section>
+  <div class="cluster">
+    <div class="section-eyebrow">4 · Why it matters</div>
+    <h3>What the pair explains</h3>
+    <p class="section-sub">Once every event is a bubble and a void, several things physics treats as
+      separate puzzles start to look like the same picture.</p>
+  </div>
+  <div class="bv-grid4">
+    <div class="card">
+      <svg viewBox="0 0 240 90" aria-hidden="true">
+        <circle cx="40" cy="45" r="16" fill="#5ad1c8"/><circle cx="200" cy="45" r="16" fill="#05070a" stroke="#f0b429" stroke-width="2" stroke-dasharray="4 3"/>
+        <path d="M56 45 C100 5 140 85 184 45" fill="none" stroke="#9aa7b8" stroke-width="2" class="bv-flow"/>
+      </svg>
+      <h3>Entanglement</h3>
+      <p class="muted">Two particles born in one event are the two ends of one D. Learn something at
+        one end and you know the matching thing at the other, however far apart, because it was never
+        two things.</p>
+      <a href="papers.html">Bell correlations and Paper #75 &rarr;</a>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 240 90" aria-hidden="true">
+        <g fill="none" stroke="#5ad1c8" stroke-width="2">
+          <circle cx="120" cy="45" r="14"/><circle cx="120" cy="45" r="26" opacity=".6"/><circle cx="120" cy="45" r="38" opacity=".3"/>
+        </g>
+      </svg>
+      <h3>Particles</h3>
+      <p class="muted">A particle is a displacement that keeps its shape, a way the cell can ring.
+        The cell has 14 ways to ring, and they sort into six families that line up with the Standard
+        Model's particles.</p>
+      <a href="theory.html">How the modes are counted &rarr;</a>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 240 90" aria-hidden="true">
+        <defs><radialGradient id="gw" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#0a0d12"/><stop offset="1" stop-color="#2e3c52"/></radialGradient></defs>
+        <rect x="0" y="0" width="240" height="90" rx="10" fill="url(#gw)"/>
+        <g fill="#5ad1c8"><circle cx="114" cy="41" r="6"/><circle cx="126" cy="43" r="6"/><circle cx="118" cy="53" r="6"/><circle cx="130" cy="54" r="5"/></g>
+        <circle cx="200" cy="45" r="5" fill="#e6edf3"/><path d="M190 45 L150 45" stroke="#e6edf3" stroke-width="2"/>
+        <path d="M156 39 L148 45 L156 51" fill="none" stroke="#e6edf3" stroke-width="2"/>
+      </svg>
+      <h3>Gravity</h3>
+      <p class="muted">Where a lot of displacement gathers, the foam around it is thinner. Things drift
+        toward thinner foam. In the framework, that drift is gravity, a pressure difference in the foam.</p>
+      <a href="theory.html">From the foam to Einstein's equations &rarr;</a>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 240 90" aria-hidden="true">
+        <g fill="#05070a" stroke="#f0b429" stroke-width="1.5" stroke-dasharray="3 3">
+          <circle cx="30" cy="30" r="7"/><circle cx="70" cy="60" r="7"/><circle cx="110" cy="25" r="7"/><circle cx="150" cy="55" r="7"/><circle cx="190" cy="35" r="7"/>
+        </g>
+        <path d="M30 30 L70 60 L110 25 L150 55 L190 35" fill="none" stroke="#6b7888" stroke-width="1.5"/>
+        <circle cx="222" cy="48" r="7" fill="#5ad1c8"/>
+      </svg>
+      <h3>Memory and time</h3>
+      <p class="muted">Bubbles move on. Voids stay where they were made. The pattern of voids is a
+        record of everything that has happened, and the direction that record grows is the direction
+        time runs.</p>
+      <a href="time.html">Why time only runs one way &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Where this stands -->
+<section>
+  <div class="cluster">
+    <div class="section-eyebrow">Where this stands</div>
+    <p class="muted">B + V = D is the framework's starting assumption, called Axiom Zero. It is assumed,
+      not derived. Everything else is built on top of it, and that is what gets tested: the particle
+      families, the constants, the predictions that could kill it. Those results are in the papers,
+      each with a script you can run. None of them is peer reviewed yet.</p>
+    <p class="muted">The drawings here are a 2D slice at cartoon scale. The real cells are 3D, and a
+      bubble is one cell holding about one Planck mass of electromagnetic energy, roughly 22 micrograms
+      squeezed into a space 10<sup>&minus;35</sup> metres wide. The entanglement, gravity and time
+      cards describe how the framework reads each one; the papers say which steps are derived and which
+      are identifications.</p>
+    <p class="muted"><a href="theory.html">See how the framework is built &rarr;</a> &nbsp;·&nbsp;
+      <a href="shape-of-everything/">Read The Shape of Everything &rarr;</a> &nbsp;·&nbsp;
+      <a href="papers.html">Read the papers &rarr;</a></p>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="sig">B + V = D</div>
+      <p class="faint">Luke Martin · Independent Researcher · Newcastle, Australia</p>
+      <a href="https://orcid.org/0009-0006-3716-5951" rel="noopener">ORCID 0009-0006-3716-5951</a>
+      <a href="https://www.instagram.com/ufft.info/" rel="noopener">Instagram @ufft.info</a>
+    </div>
+    <div>
+      <h4>Repository</h4>
+      <a href="https://github.com/ufft-info/UFFT" rel="noopener">GitHub</a>
+      <a href="https://github.com/ufft-info/UFFT/blob/main/UFFT_Core_Framework_v9.md" rel="noopener">Core Framework</a>
+      <a href="https://github.com/ufft-info/UFFT/blob/main/From_Foam_to_Fermions.md" rel="noopener">From Foam to Fermions (book)</a>
+      <a href="https://github.com/ufft-info/UFFT/blob/main/papers/INDEX.md" rel="noopener">Papers index (DOIs)</a>
+    </div>
+    <div>
+      <h4>On this site</h4>
+      <a href="index.html">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="bubble-void.html">Bubble and void, drawn</a>
+      <a href="predictions.html">Predictions</a>
+      <a href="papers.html">Papers</a>
+      <a href="time.html">Why time runs one way</a>
+    </div>
+    <div class="disc">
+      <p class="faint">Text &amp; figures CC-BY 4.0 · code MIT · Priority date 20 Feb 2026 ·
+        Framework v10 (April 2026) · Not yet peer reviewed — independent reproduction invited.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/foam.js"></script>
+<script src="assets/bubble-void.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
